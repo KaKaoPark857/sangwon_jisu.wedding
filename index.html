@@ -386,7 +386,7 @@ const C = CONFIG;
 const $ = s => document.querySelector(s);
 
 /* ---- 텍스트 채우기 ---- */
-$("#heroNames").innerHTML = `${C.groom.name.slice(-3)} <small>and</small> ${C.bride.name.slice(-3)}`;
+$("#heroNames").innerHTML = `${C.groom.name.slice(-4)} <small>and</small> ${C.bride.name.slice(-4)}`;
 $("#heroDate").textContent = C.wedding.dateText;
 $("#verse").textContent = C.greeting.verse;
 $("#greetBody").innerHTML = C.greeting.body.replace(/\n/g,"<br>");

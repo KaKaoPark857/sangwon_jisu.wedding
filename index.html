@@ -73,30 +73,6 @@ body{
   100%{transform:translateY(105vh) rotate(420deg);opacity:.18}
 }
 
-/* ===== 풍선 피날레 (천장 오픈 연출) ===== */
-.finale{position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#fffdfb 0%,#fdeee8 55%,#fbdde0 100%);
-  padding:64px 30px 70px;text-align:center}
-.finale .sky-text{font-family:'Hi Melody',cursive;font-size:18px;color:var(--coral-deep);
-  position:relative;z-index:3;line-height:1.9}
-.finale .sky-title{font-family:'Gaegu',cursive;font-weight:700;font-size:24px;color:var(--ink);
-  position:relative;z-index:3;margin-bottom:8px}
-/* 떠오르는 풍선들 */
-.balloons{position:absolute;inset:0;pointer-events:none;z-index:1}
-.balloon{position:absolute;bottom:-60px;width:26px;height:33px;border-radius:50% 50% 48% 48%;
-  opacity:0;animation:rise linear infinite}
-.balloon::after{content:"";position:absolute;bottom:-7px;left:50%;width:1px;height:9px;
-  background:rgba(150,120,110,.5);transform:translateX(-50%)}
-.balloon.c-coral{background:radial-gradient(circle at 35% 30%, #f9b3a0, #f2603a)}
-.balloon.c-green{background:radial-gradient(circle at 35% 30%, #f8c9bd, #e8896f)}
-.balloon.c-white{background:radial-gradient(circle at 35% 30%, #ffffff, #f8e3da);border:1px solid #f3d4cb}
-.balloon.c-mint{background:radial-gradient(circle at 35% 30%, #fbd9cf, #f7c9c0)}
-@keyframes rise{
-  0%{transform:translateY(0) translateX(0) rotate(-6deg);opacity:0}
-  12%{opacity:.92}
-  85%{opacity:.92}
-  100%{transform:translateY(-118vh) translateX(18px) rotate(6deg);opacity:0}
-}
 
 section{padding:60px 30px;position:relative}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
@@ -115,23 +91,30 @@ section{padding:60px 30px;position:relative}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
   align-items:center;text-align:center;padding:40px 26px;
   background:linear-gradient(180deg,#fffdfb 0%,#fdf3ef 100%)}
-.hero .card{width:100%;position:relative;padding:44px 30px;background:#fff;border-radius:8px}
-.hero .hand-frame{position:absolute;inset:-6px;width:calc(100% + 12px);height:calc(100% + 12px);
-  pointer-events:none;z-index:0}
-.hero .card > *:not(.hand-frame){position:relative;z-index:1}
+.hero .card{width:100%;max-width:360px;position:relative;padding:40px 26px 36px;background:#fff;
+  border-radius:14px;border:2px solid var(--coral);
+  box-shadow:inset 0 0 0 5px #fff, inset 0 0 0 6.5px var(--coral-soft)}
+/* 상단 중앙 리본 */
+.hero .ribbon-svg{position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+  width:72px;height:32px;background:#fff;padding:0 6px}
+/* 측면·하단 하트 (고정 위치, 왜곡 없음) */
+.hero .hb{position:absolute;color:var(--coral);font-size:15px;line-height:1}
+.hero .hb-l{left:-9px;top:46%}
+.hero .hb-r{right:-9px;top:54%}
+.hero .hb-b{bottom:-10px;left:50%;transform:translateX(-50%)}
 /* 손그림 느낌 모서리 리본 */
 .hero .ribbon{font-size:32px;color:var(--coral);margin-bottom:4px;line-height:1}
 .hero .bigdate{font-family:'Gaegu',cursive;font-weight:700;font-size:42px;letter-spacing:.02em;
   color:var(--ink);margin:2px 0 20px}
-.hero .main-photo{width:248px;height:322px;margin:0 auto 18px;
-  border-radius:124px 124px 10px 10px;       /* 아치형: 상단 둥글게 */
+.hero .main-photo{width:270px;height:350px;margin:0 auto 18px;
+  border-radius:135px 135px 10px 10px;       /* 아치형: 상단 둥글게 */
   overflow:hidden;position:relative;
   border:2.5px solid var(--coral-soft);
   background:repeating-linear-gradient(45deg,#fdf1ec,#fdf1ec 12px,#f8e3da 12px,#f8e3da 24px);
   display:flex;align-items:center;justify-content:center}
 .hero .main-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .hero .main-photo .ph-text{font-family:'Gaegu',cursive;color:var(--ink-soft);font-size:14px}
-.hero .names{font-family:'Gaegu',cursive;font-weight:700;font-size:32px;color:var(--ink);margin:8px 0}
+.hero .names{font-family:'Gaegu',cursive;font-weight:700;font-size:42px;color:var(--coral-deep);margin:10px 0;letter-spacing:.01em}
 .hero .names .heart{color:var(--coral);margin:0 8px}
 .hero .invite{font-family:'Hi Melody',cursive;font-size:19px;color:var(--ink-soft);margin-top:10px}
 .hero .time{font-family:'Gaegu',cursive;font-size:18px;color:var(--coral);margin-top:6px;font-weight:700}
@@ -267,10 +250,10 @@ section{padding:60px 30px;position:relative}
 .btn-kakao{background:#fee500;color:#3b1e1e}
 .btn-link{background:#fff;color:var(--coral);border:1.5px solid var(--coral-soft)!important}
 .footer{text-align:center;padding:46px 30px 60px;color:var(--ink-soft);font-size:13px;
-  background:linear-gradient(180deg,#f3faf0,#eef7ec)}
+  background:linear-gradient(180deg,#fffdfb,#fdeee8)}
 .footer .heart-line{margin-bottom:12px}
-.footer .fnames{font-family:'Gaegu',cursive;font-weight:700;font-size:18px;color:var(--ink)}
-.footer .msg{font-family:'Hi Melody',cursive;font-size:16px;margin-top:8px}
+.footer .fnames{font-family:'Gaegu',cursive;font-weight:700;font-size:20px;color:var(--coral-deep)}
+.footer .msg{font-family:'Hi Melody',cursive;font-size:16px;margin-top:8px;color:var(--coral)}
 
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
   background:var(--ink);color:#fff;padding:11px 22px;border-radius:24px;font-size:14px;
@@ -285,14 +268,15 @@ section{padding:60px 30px;position:relative}
 <script id="config">
 const CONFIG = {
   // ── 기본 정보 ──────────────────────────────
-  groom:  { name: "박상원", father: "박광순", mother: "노재정", order: "장남",
+  groom:  { name: "박상원", displayName: "상원", father: "박광순", mother: "노재정", order: "장남",
             account: { bank: "국민은행", number: "123-456-789000", holder: "상원" } },
-  bride:  { name: "이지수", father: "이창환", mother: "김정화", order: "차녀",
+  bride:  { name: "이지수", displayName: "지수", father: "이창환", mother: "김정화", order: "차녀",
             account: { bank: "국민은행", number: "110-234-567890", holder: "지수" } },
 
   // ── 예식 일시/장소 ─────────────────────────
   wedding: {
     dateText: "2026년 08월 23일 일요일 낮 12시 10분",
+    heroDateText: "8월 23일 (일) 낮 12시 10분",
     bigDate: "26.08.23",
     year: 2026, month: 8, day: 23, hour: 12, minute: 10,
     placeName: "더아리엘 수원",
@@ -330,7 +314,7 @@ const CONFIG = {
   siteUrl: "https://kakaopark857.github.io/sangwon_jisu.wedding/",
 
   // ── API 키 (발급 후 입력. 비워두면 자동 비활성화) ──
-  kakaoJsKey: "",
+  kakaoJsKey: "b7dbf2d04d1c238104ba31fcac005331",
   naverMapClientId: ""
 };
 </script>
@@ -342,24 +326,18 @@ const CONFIG = {
   <!-- HERO -->
   <section class="hero">
     <div class="card reveal">
-      <svg class="hand-frame" viewBox="0 0 300 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-           fill="none" stroke="#f2603a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <!-- 손그림 느낌 둥근 사각 라인 -->
-        <path d="M28 64 Q26 40 50 36 L120 31"/>
-        <path d="M180 31 L250 36 Q274 40 272 64 L276 150"/>
-        <path d="M276 180 L274 330 Q274 360 248 363 L180 368"/>
-        <path d="M120 368 L52 363 Q26 360 26 330 L24 180"/>
-        <!-- 상단 중앙 리본 -->
-        <path d="M150 30 Q140 14 126 20 Q116 25 128 33 Q140 39 150 32"/>
-        <path d="M150 30 Q160 14 174 20 Q184 25 172 33 Q160 39 150 32"/>
-        <path d="M150 32 L146 46 M150 32 L154 46 M146 46 L154 46" stroke-width="2"/>
-        <!-- 측면/하단 하트 -->
-        <g stroke="none" fill="#f2603a">
-          <path d="M16 195 q-3 -5 -7 -2 q-4 3 0 7 l7 7 l7 -7 q4 -4 0 -7 q-4 -3 -7 2z"/>
-          <path d="M284 215 q-3 -5 -7 -2 q-4 3 0 7 l7 7 l7 -7 q4 -4 0 -7 q-4 -3 -7 2z"/>
-          <path d="M150 384 q-3 -5 -7 -2 q-4 3 0 7 l7 7 l7 -7 q4 -4 0 -7 q-4 -3 -7 2z"/>
-        </g>
+      <!-- 상단 중앙 리본 (고정 크기 SVG, 왜곡 없음) -->
+      <svg class="ribbon-svg" viewBox="0 0 80 36" xmlns="http://www.w3.org/2000/svg"
+           fill="none" stroke="#f2603a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 20 Q26 4 14 12 Q6 18 16 24 Q28 30 40 22"/>
+        <path d="M40 20 Q54 4 66 12 Q74 18 64 24 Q52 30 40 22"/>
+        <path d="M40 22 L34 34 M40 22 L46 34 M34 34 L46 34"/>
+        <circle cx="40" cy="20" r="2.5" fill="#f2603a" stroke="none"/>
       </svg>
+      <!-- 모서리/측면 하트 (고정 위치) -->
+      <span class="hb hb-l">♥</span>
+      <span class="hb hb-r">♥</span>
+      <span class="hb hb-b">♥</span>
       <div class="bigdate" id="bigDate"></div>
       <div class="main-photo" id="mainPhoto">
         <!-- CONFIG.mainPhoto 경로가 있으면 사진, 없으면 placeholder가 표시됩니다 -->
@@ -507,15 +485,6 @@ const CONFIG = {
     </div>
   </section>
 
-  <!-- FINALE (천장 오픈 + 풍선 피날레) -->
-  <section class="finale">
-    <div class="balloons" id="balloons"></div>
-    <div class="reveal">
-      <div class="sky-title">하늘이 열리는 순간</div>
-      <div class="sky-text">천장이 열리고 축복의 풍선이 떠오르는<br>그 순간을 여러분과 함께하고 싶습니다.</div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <div class="footer">
     <div class="heart-line">♥ ♥ ♥</div>
@@ -540,12 +509,12 @@ $("#bigDate").textContent = C.wedding.bigDate;
 if(C.mainPhoto){
   $("#mainPhoto").innerHTML = `<img src="${C.mainPhoto}" alt="메인 사진">`;
 }
-$("#hG").textContent = C.groom.name;
-$("#hB").textContent = C.bride.name;
-$("#heroTime").textContent = C.wedding.dateText.replace(/^.*일요일\s*/, '8월 23일 (일) ').replace('낮 ','').replace('분','');
+$("#hG").textContent = C.groom.displayName || C.groom.name;
+$("#hB").textContent = C.bride.displayName || C.bride.name;
+$("#heroTime").textContent = C.wedding.heroDateText || C.wedding.dateText;
 $("#logoG").textContent = C.groom.name.slice(-2);
 $("#logoB").textContent = C.bride.name.slice(-2);
-$("#verse").textContent = C.greeting.verse;
+$("#verse").innerHTML = C.greeting.verse.replace(/\n/g,"<br>");
 $("#greetBody").innerHTML = C.greeting.body.replace(/\n/g,"<br>");
 $("#parents").innerHTML =
   `<div><b>${C.groom.father} · ${C.groom.mother}</b>의 ${C.groom.order} <span class="nm">${C.groom.name}</span></div>` +
@@ -716,12 +685,19 @@ renderGB();
 if(C.kakaoJsKey){
   const s=document.createElement('script');
   s.src=`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${C.kakaoJsKey}&autoload=false`;
-  s.onload=()=>kakao.maps.load(()=>{
-    const pos=new kakao.maps.LatLng(C.wedding.lat,C.wedding.lng);
-    const map=new kakao.maps.Map($("#map"),{center:pos,level:3});
-    new kakao.maps.Marker({position:pos,map});
-    $("#map").style.display='block';
-  });
+  s.onload=()=>{
+    if(typeof kakao==='undefined'||!kakao.maps){
+      $("#map").textContent='지도를 불러오지 못했습니다 (도메인 등록을 확인해 주세요)';
+      return;
+    }
+    kakao.maps.load(()=>{
+      const pos=new kakao.maps.LatLng(C.wedding.lat,C.wedding.lng);
+      const map=new kakao.maps.Map($("#map"),{center:pos,level:3});
+      new kakao.maps.Marker({position:pos,map});
+      $("#map").style.padding='0';
+    });
+  };
+  s.onerror=()=>{ $("#map").textContent='지도 스크립트 로드 실패 (네트워크/도메인 확인)'; };
   document.head.appendChild(s);
 }else{
   $("#map").textContent='지도: CONFIG.kakaoJsKey 입력 후 표시됩니다';
@@ -732,14 +708,19 @@ const shareKakaoBtn=$("#shareKakao");
 if(C.kakaoJsKey && window.Kakao){
   if(!Kakao.isInitialized()) Kakao.init(C.kakaoJsKey);
   shareKakaoBtn.addEventListener('click',()=>{
+    // mainPhoto가 절대 URL(http로 시작)이면 공유 이미지로 사용
+    let imgUrl = '';
+    if(C.mainPhoto && /^https?:\/\//.test(C.mainPhoto)) imgUrl = C.mainPhoto;
+    else if(C.mainPhoto && C.siteUrl) imgUrl = C.siteUrl.replace(/\/$/,'') + '/' + C.mainPhoto.replace(/^\//,'');
+    const content = {
+      title:`${C.groom.displayName} ♥ ${C.bride.displayName} 결혼합니다`,
+      description:C.wedding.dateText+'\n'+C.wedding.placeName,
+      link:{mobileWebUrl:location.href,webUrl:location.href}
+    };
+    if(imgUrl) content.imageUrl = imgUrl;
     Kakao.Share.sendDefault({
       objectType:'feed',
-      content:{
-        title:`${C.groom.name} ♥ ${C.bride.name} 결혼합니다`,
-        description:C.wedding.dateText+'\n'+C.wedding.placeName,
-        imageUrl:'',
-        link:{mobileWebUrl:location.href,webUrl:location.href}
-      },
+      content:content,
       buttons:[{title:'청첩장 보기',link:{mobileWebUrl:location.href,webUrl:location.href}}]
     });
   });
@@ -785,22 +766,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }
 })();
 
-/* ---- 풍선 피날레 생성 (천장 오픈 연출) ---- */
-(function balloons(){
-  const box=$("#balloons");
-  if(!box) return;
-  const colors=['c-coral','c-green','c-white','c-mint'];
-  const N=16;
-  for(let i=0;i<N;i++){
-    const b=document.createElement('div');
-    b.className='balloon '+colors[i%colors.length];
-    b.style.left=(4+Math.random()*92)+'%';
-    b.style.animationDuration=(7+Math.random()*6)+'s';
-    b.style.animationDelay=(Math.random()*7)+'s';
-    b.style.transform=`scale(${.7+Math.random()*.8})`;
-    box.appendChild(b);
-  }
-})();
 </script>
 
 </body>

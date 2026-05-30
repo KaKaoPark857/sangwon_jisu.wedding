@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Hi+Melody&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gamja+Flower&family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Hi+Melody&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -53,11 +53,11 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-.wrap{max-width:460px;margin:0 auto;background:var(--paper);min-height:100vh;
+.wrap{max-width:460px;margin:0 auto;background:var(--paper);min-height:100vh;min-height:100dvh;
   box-shadow:var(--shadow);position:relative;overflow:hidden}
 
 /* 손글씨 계열 폰트 */
-.hand{font-family:'Gaegu',cursive}
+.hand{font-family:'Jua',sans-serif}
 .melody{font-family:'Hi Melody',cursive}
 
 /* 은은하게 떨어지는 코랄 꽃잎 + 하트 */
@@ -82,42 +82,45 @@ section{padding:60px 30px;position:relative}
   text-transform:uppercase;font-size:13px;color:var(--coral);font-weight:500}
 .divider{width:40px;height:2px;background:var(--coral-soft);margin:18px auto;border-radius:2px}
 .center{text-align:center}
-.title{font-family:'Gaegu',cursive;font-weight:700;font-size:24px;margin-bottom:6px;color:var(--ink)}
+.title{font-family:'Jua',sans-serif;font-weight:700;font-size:24px;margin-bottom:6px;color:var(--ink)}
 
 /* 손그림 하트 구분선 */
 .heart-line{text-align:center;color:var(--coral);font-size:15px;letter-spacing:8px;margin:14px 0}
 
 /* ===== HERO (종이청첩장 우측 페이지 느낌) ===== */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
   align-items:center;text-align:center;padding:40px 26px;
   background:linear-gradient(180deg,#fffdfb 0%,#fdf3ef 100%)}
-.hero .card{width:100%;max-width:360px;position:relative;padding:40px 26px 36px;background:#fff;
-  border-radius:14px;border:2px solid var(--coral);
-  box-shadow:inset 0 0 0 5px #fff, inset 0 0 0 6.5px var(--coral-soft)}
+.hero .card{width:100%;max-width:340px;position:relative;padding:46px 30px 42px;background:#fff;
+  border-radius:10px}
+/* 손그림 일렁임 프레임 (카드를 감쌈) */
+.hero .doodle-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;
+  overflow:visible}
+.hero .card > *:not(.doodle-frame){position:relative;z-index:1}
 /* 상단 중앙 리본 */
-.hero .ribbon-svg{position:absolute;top:-18px;left:50%;transform:translateX(-50%);
-  width:72px;height:32px;background:#fff;padding:0 6px}
+.hero .ribbon-svg{position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  width:78px;height:40px;z-index:2}
 /* 측면·하단 하트 (고정 위치, 왜곡 없음) */
-.hero .hb{position:absolute;color:var(--coral);font-size:15px;line-height:1}
-.hero .hb-l{left:-9px;top:46%}
-.hero .hb-r{right:-9px;top:54%}
-.hero .hb-b{bottom:-10px;left:50%;transform:translateX(-50%)}
+.hero .hb{position:absolute;color:var(--coral);font-size:16px;line-height:1;z-index:2}
+.hero .hb-l{left:-7px;top:46%}
+.hero .hb-r{right:-7px;top:54%}
+.hero .hb-b{bottom:-12px;left:50%;transform:translateX(-50%)}
 /* 손그림 느낌 모서리 리본 */
 .hero .ribbon{font-size:32px;color:var(--coral);margin-bottom:4px;line-height:1}
-.hero .bigdate{font-family:'Gaegu',cursive;font-weight:700;font-size:42px;letter-spacing:.02em;
+.hero .bigdate{font-family:'Jua',sans-serif;font-weight:700;font-size:clamp(34px,11vw,44px);letter-spacing:.02em;
   color:var(--ink);margin:2px 0 20px}
-.hero .main-photo{width:270px;height:350px;margin:0 auto 18px;
-  border-radius:135px 135px 10px 10px;       /* 아치형: 상단 둥글게 */
+.hero .main-photo{width:78%;max-width:280px;aspect-ratio:27/35;margin:0 auto 18px;
+  border-radius:50% 50% 10px 10px / 40% 40% 4% 4%;   /* 비율 기반 아치형(기기 무관) */
   overflow:hidden;position:relative;
   border:2.5px solid var(--coral-soft);
   background:repeating-linear-gradient(45deg,#fdf1ec,#fdf1ec 12px,#f8e3da 12px,#f8e3da 24px);
   display:flex;align-items:center;justify-content:center}
 .hero .main-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.hero .main-photo .ph-text{font-family:'Gaegu',cursive;color:var(--ink-soft);font-size:14px}
-.hero .names{font-family:'Gaegu',cursive;font-weight:700;font-size:42px;color:var(--coral-deep);margin:10px 0;letter-spacing:.01em}
+.hero .main-photo .ph-text{font-family:'Jua',sans-serif;color:var(--ink-soft);font-size:14px}
+.hero .names{font-family:'Jua',sans-serif;font-weight:700;font-size:clamp(34px,11vw,44px);color:var(--coral-deep);margin:10px 0;letter-spacing:.01em}
 .hero .names .heart{color:var(--coral);margin:0 8px}
 .hero .invite{font-family:'Hi Melody',cursive;font-size:19px;color:var(--ink-soft);margin-top:10px}
-.hero .time{font-family:'Gaegu',cursive;font-size:18px;color:var(--coral);margin-top:6px;font-weight:700}
+.hero .time{font-family:'Jua',sans-serif;font-size:18px;color:var(--coral);margin-top:6px;font-weight:700}
 /* 코너 하트 (종이청첩장) */
 .hero .corner{position:absolute;color:var(--coral);font-size:15px}
 .hero .c1{top:12px;left:14px}.hero .c2{top:12px;right:14px}
@@ -125,15 +128,15 @@ section{padding:60px 30px;position:relative}
 
 /* 자물쇠 로고 */
 .lock-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px}
-.lock-logo .nm{font-family:'Gaegu',cursive;font-weight:700;font-size:20px;color:var(--ink)}
+.lock-logo .nm{font-family:'Jua',sans-serif;font-weight:700;font-size:20px;color:var(--ink)}
 .lock-logo svg{width:30px;height:30px}
 
 /* ===== GREETING ===== */
 .greet p{color:var(--ink-soft);font-size:15.5px}
 .greet .verse{margin:22px 0;font-size:16px;color:var(--ink);font-family:'Hi Melody',cursive;font-size:19px;line-height:1.9}
 .parents{margin-top:30px;font-size:15px;color:var(--ink-soft);line-height:2.4}
-.parents b{color:var(--ink);font-weight:700;font-family:'Gaegu',cursive;font-size:17px}
-.parents .nm{font-family:'Gaegu',cursive;font-weight:700;font-size:19px;color:var(--coral);margin-left:6px}
+.parents b{color:var(--ink);font-weight:700;font-family:'Jua',sans-serif;font-size:17px}
+.parents .nm{font-family:'Jua',sans-serif;font-weight:700;font-size:19px;color:var(--coral);margin-left:6px}
 
 /* ===== GALLERY TILE GRID ===== */
 .tile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
@@ -141,7 +144,7 @@ section{padding:60px 30px;position:relative}
 .tile{aspect-ratio:3/4;border-radius:6px;overflow:hidden;cursor:pointer;position:relative;
   background:repeating-linear-gradient(45deg,#fdf1ec,#fdf1ec 8px,#f8e3da 8px,#f8e3da 16px);
   border:1px solid var(--coral-soft);display:flex;align-items:center;justify-content:center;
-  color:var(--ink-soft);font-size:11px;font-family:'Gaegu',cursive;transition:transform .2s}
+  color:var(--ink-soft);font-size:11px;font-family:'Jua',sans-serif;transition:transform .2s}
 .tile:active{transform:scale(.96)}
 .tile img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -157,7 +160,7 @@ section{padding:60px 30px;position:relative}
 .lightbox .lb-ph{width:78vw;max-width:380px;aspect-ratio:3/4;border-radius:8px;
   background:repeating-linear-gradient(45deg,#fdf1ec,#fdf1ec 14px,#f8e3da 14px,#f8e3da 28px);
   display:flex;align-items:center;justify-content:center;color:#b08a7c;
-  font-family:'Gaegu',cursive;font-size:16px}
+  font-family:'Jua',sans-serif;font-size:16px}
 .lightbox .lb-close{position:absolute;top:18px;right:20px;width:42px;height:42px;border:none;
   background:rgba(255,255,255,.15);color:#fff;border-radius:50%;font-size:24px;cursor:pointer}
 .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;
@@ -165,14 +168,14 @@ section{padding:60px 30px;position:relative}
   display:flex;align-items:center;justify-content:center}
 .lightbox .lb-prev{left:14px}.lightbox .lb-next{right:14px}
 .lightbox .lb-count{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
-  color:#fff;font-family:'Gaegu',cursive;font-size:15px;background:rgba(0,0,0,.3);
+  color:#fff;font-family:'Jua',sans-serif;font-size:15px;background:rgba(0,0,0,.3);
   padding:5px 16px;border-radius:16px}
 .lightbox .lb-hint{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);
   color:rgba(255,255,255,.6);font-family:'Hi Melody',cursive;font-size:13px}
 
 /* ===== CALENDAR / DDAY ===== */
 .cal{margin:22px auto 0;max-width:300px}
-.cal .mon{font-family:'Gaegu',cursive;font-weight:700;font-size:26px;color:var(--coral);margin-bottom:10px}
+.cal .mon{font-family:'Jua',sans-serif;font-weight:700;font-size:26px;color:var(--coral);margin-bottom:10px}
 .cal table{width:100%;border-collapse:collapse;text-align:center}
 .cal th{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink-soft);
   padding:8px 0;letter-spacing:.05em}
@@ -183,38 +186,38 @@ section{padding:60px 30px;position:relative}
 .cal td.mark::before{content:"";position:absolute;inset:2px;margin:auto;width:32px;height:32px;
   border:2px solid var(--coral);border-radius:50%;z-index:1;left:0;right:0}
 .dday{margin-top:24px;text-align:center;font-size:16px;font-family:'Hi Melody',cursive}
-.dday .num{font-family:'Gaegu',cursive;font-size:28px;color:var(--coral);font-weight:700}
+.dday .num{font-family:'Jua',sans-serif;font-size:28px;color:var(--coral);font-weight:700}
 .countdown{display:flex;justify-content:center;gap:8px;margin-top:16px}
 .countdown div{background:var(--green-bg);border-radius:10px;padding:12px 0;width:62px}
-.countdown .n{font-family:'Gaegu',cursive;font-size:22px;color:var(--green);font-weight:700}
+.countdown .n{font-family:'Jua',sans-serif;font-size:22px;color:var(--green);font-weight:700}
 .countdown .l{font-size:11px;color:var(--ink-soft);letter-spacing:.05em}
 
 /* ===== LOCATION ===== */
-.place .name{font-size:19px;font-weight:700;text-align:center;font-family:'Gaegu',cursive}
+.place .name{font-size:19px;font-weight:700;text-align:center;font-family:'Jua',sans-serif}
 .place .addr{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:4px}
 .transport{margin-top:18px;background:var(--green-bg);border-radius:10px;padding:16px 18px;
   font-size:14px;color:var(--ink);line-height:2}
-.transport b{color:var(--coral);font-family:'Gaegu',cursive;font-size:15px}
+.transport b{color:var(--coral);font-family:'Jua',sans-serif;font-size:15px}
 #map{width:100%;height:230px;margin-top:16px;border-radius:10px;border:1px solid var(--line);
   background:#eef4ec;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:13px}
 .map-btns{display:flex;gap:8px;margin-top:12px}
 .map-btns a{flex:1;text-align:center;padding:12px 0;border:1.5px solid var(--coral-soft);border-radius:10px;
-  text-decoration:none;color:var(--coral);font-size:14px;background:#fff;font-family:'Gaegu',cursive;font-weight:700}
+  text-decoration:none;color:var(--coral);font-size:14px;background:#fff;font-family:'Jua',sans-serif;font-weight:700}
 .map-btns a:active{background:#fff4f0}
 
 /* ===== ACCOUNT ===== */
 .acc-toggle{width:100%;padding:14px;background:var(--green-bg);border:none;border-radius:12px;
-  font-family:'Gaegu',cursive;font-weight:700;font-size:16px;color:var(--ink);cursor:pointer;margin-top:8px}
+  font-family:'Jua',sans-serif;font-weight:700;font-size:16px;color:var(--ink);cursor:pointer;margin-top:8px}
 .acc-group{display:none;margin-top:10px}
 .acc-group.open{display:block;animation:fade .4s ease}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.acc-side{font-size:13px;color:var(--ink);margin:16px 0 6px;font-weight:700;font-family:'Gaegu',cursive}
+.acc-side{font-size:13px;color:var(--ink);margin:16px 0 6px;font-weight:700;font-family:'Jua',sans-serif}
 .acc-item{display:flex;justify-content:space-between;align-items:center;
   background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}
 .acc-item .info{font-size:13.5px}
 .acc-item .info b{display:block;font-weight:700;margin-bottom:2px;color:#000}
 .acc-item .info span{color:var(--ink-soft)}
-.acc-item button{font-family:'Gaegu',cursive;font-weight:700;font-size:13px;padding:7px 13px;
+.acc-item button{font-family:'Jua',sans-serif;font-weight:700;font-size:13px;padding:7px 13px;
   border:1.5px solid var(--coral-soft);background:#fff;color:var(--coral);border-radius:8px;cursor:pointer}
 .acc-item button:active{background:var(--coral);color:#fff}
 
@@ -223,13 +226,13 @@ section{padding:60px 30px;position:relative}
 .gb-form input,.gb-form textarea{font-family:'Gowun Dodum',sans-serif;font-size:14px;padding:11px 13px;
   border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);resize:none}
 .gb-form input:focus,.gb-form textarea:focus{outline:none;border-color:var(--coral-soft)}
-.gb-form button{font-family:'Gaegu',cursive;font-weight:700;font-size:16px;padding:12px;
+.gb-form button{font-family:'Jua',sans-serif;font-weight:700;font-size:16px;padding:12px;
   background:var(--coral);color:#fff;border:none;border-radius:10px;cursor:pointer}
 .gb-form button:active{background:#d94e2c}
 .gb-list{margin-top:18px;display:flex;flex-direction:column;gap:10px}
 .gb-entry{background:var(--green-bg);border-radius:10px;padding:12px 14px}
 .gb-entry .top{display:flex;justify-content:space-between;align-items:baseline}
-.gb-entry .who{font-weight:700;font-size:14px;font-family:'Gaegu',cursive}
+.gb-entry .who{font-weight:700;font-size:14px;font-family:'Jua',sans-serif}
 .gb-entry .when{font-size:11px;color:var(--ink-soft)}
 .gb-entry .msg{font-size:14px;color:var(--ink);margin-top:6px;white-space:pre-wrap}
 .gb-empty{text-align:center;color:var(--ink-soft);font-size:13px;padding:18px 0;font-family:'Hi Melody',cursive}
@@ -239,25 +242,25 @@ section{padding:60px 30px;position:relative}
   border-radius:14px;display:flex;align-items:center;justify-content:center;padding:14px}
 .qr-box canvas,.qr-box img{width:100%!important;height:100%!important;border-radius:4px}
 .qr-desc{font-size:14px;color:var(--ink-soft);margin-top:14px;font-family:'Hi Melody',cursive}
-.qr-save{margin-top:14px;font-family:'Gaegu',cursive;font-weight:700;font-size:15px;padding:10px 24px;
+.qr-save{margin-top:14px;font-family:'Jua',sans-serif;font-weight:700;font-size:15px;padding:10px 24px;
   background:#fff;border:1.5px solid var(--coral-soft);color:var(--coral);border-radius:10px;cursor:pointer}
 .qr-save:active{background:var(--coral);color:#fff}
 
 /* ===== SHARE / FOOTER ===== */
 .share-btns{display:flex;gap:8px}
-.share-btns button{flex:1;font-family:'Gaegu',cursive;font-weight:700;font-size:15px;padding:13px 0;
+.share-btns button{flex:1;font-family:'Jua',sans-serif;font-weight:700;font-size:15px;padding:13px 0;
   border-radius:10px;border:none;cursor:pointer}
 .btn-kakao{background:#fee500;color:#3b1e1e}
 .btn-link{background:#fff;color:var(--coral);border:1.5px solid var(--coral-soft)!important}
 .footer{text-align:center;padding:46px 30px 60px;color:var(--ink-soft);font-size:13px;
   background:linear-gradient(180deg,#fffdfb,#fdeee8)}
 .footer .heart-line{margin-bottom:12px}
-.footer .fnames{font-family:'Gaegu',cursive;font-weight:700;font-size:20px;color:var(--coral-deep)}
+.footer .fnames{font-family:'Jua',sans-serif;font-weight:700;font-size:20px;color:var(--coral-deep)}
 .footer .msg{font-family:'Hi Melody',cursive;font-size:16px;margin-top:8px;color:var(--coral)}
 
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
   background:var(--ink);color:#fff;padding:11px 22px;border-radius:24px;font-size:14px;
-  opacity:0;transition:.3s;z-index:100;pointer-events:none;font-family:'Gaegu',cursive}
+  opacity:0;transition:.3s;z-index:100;pointer-events:none;font-family:'Jua',sans-serif}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
@@ -325,13 +328,30 @@ const CONFIG = {
   <!-- HERO -->
   <section class="hero">
     <div class="card reveal">
-      <!-- 상단 중앙 리본 (고정 크기 SVG, 왜곡 없음) -->
-      <svg class="ribbon-svg" viewBox="0 0 80 36" xmlns="http://www.w3.org/2000/svg"
+      <!-- 손그림 일렁임 프레임 (preserveAspectRatio none이지만 일렁임이 촘촘해 비율변화에 강함) -->
+      <svg class="doodle-frame" viewBox="0 0 340 460" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
+           fill="none" stroke="#f2603a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 상단 가로선 (살짝 일렁) -->
+        <path d="M40 14 q30 -6 60 0 t60 0 t60 0 t60 0 q14 1 16 16"/>
+        <!-- 우측 세로선 -->
+        <path d="M316 30 q6 40 0 80 t0 80 t0 80 t0 80 q-1 16 -16 18"/>
+        <!-- 하단 가로선 -->
+        <path d="M300 446 q-30 6 -60 0 t-60 0 t-60 0 t-60 0 q-14 -1 -16 -16"/>
+        <!-- 좌측 세로선 -->
+        <path d="M24 430 q-6 -40 0 -80 t0 -80 t0 -80 t0 -80 q1 -16 16 -18"/>
+      </svg>
+      <!-- 상단 중앙 리본 -->
+      <svg class="ribbon-svg" viewBox="0 0 90 46" xmlns="http://www.w3.org/2000/svg"
            fill="none" stroke="#f2603a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M40 20 Q26 4 14 12 Q6 18 16 24 Q28 30 40 22"/>
-        <path d="M40 20 Q54 4 66 12 Q74 18 64 24 Q52 30 40 22"/>
-        <path d="M40 22 L34 34 M40 22 L46 34 M34 34 L46 34"/>
-        <circle cx="40" cy="20" r="2.5" fill="#f2603a" stroke="none"/>
+        <!-- 왼쪽 고리 -->
+        <path d="M45 17 C32 6 14 6 12 16 C10 26 30 27 45 20 Z" fill="#fff"/>
+        <!-- 오른쪽 고리 -->
+        <path d="M45 17 C58 6 76 6 78 16 C80 26 60 27 45 20 Z" fill="#fff"/>
+        <!-- 매듭 -->
+        <path d="M41 15 C39 18 39 22 41 25 L49 25 C51 22 51 18 49 15 Z" fill="#f2603a" stroke="none"/>
+        <!-- 양쪽 꼬리 -->
+        <path d="M43 25 C40 33 35 38 30 42"/>
+        <path d="M47 25 C50 33 55 38 60 42"/>
       </svg>
       <!-- 모서리/측면 하트 (고정 위치) -->
       <span class="hb hb-l">♥</span>

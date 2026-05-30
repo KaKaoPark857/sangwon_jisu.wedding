@@ -29,20 +29,19 @@
 
 <style>
 :root{
-  /* 더아리엘 가든 하우스: 밝은 화이트 + 그리너리 그린, 코랄은 포인트 */
-  --bg:#fcfdfa;            /* 거의 순백에 가까운 밝은 화이트 */
+  /* 여름 + 종이청첩장 코랄 팔레트 */
+  --bg:#fbfdf8;            /* 아주 밝은 화이트-민트 */
   --paper:#ffffff;
-  --ink:#37423a;          /* 그린이 살짝 도는 잉크 */
-  --ink-soft:#7a847a;
-  --line:#e9efe7;
-  --coral:#e8896f;        /* 코랄: 포인트로 톤 다운 (기존보다 부드럽게) */
-  --coral-soft:#f1b9a8;   /* 연한 코랄(아주 가벼운 포인트) */
-  --pink:#f3d4cb;
-  --green:#4f9a63;        /* 메인 그리너리 그린 */
-  --green-deep:#3d7d4e;   /* 짙은 잎 그린 */
-  --green-soft:#cbe6cf;   /* 연한 민트 */
-  --green-bg:#eef6ec;     /* 섹션 배경용 연민트 */
-  --shadow:0 12px 40px rgba(80,120,90,.10);
+  --ink:#3a3a38;
+  --ink-soft:#76746e;
+  --line:#ececec;
+  --coral:#f2603a;        /* 종이청첩장 코랄/주황 메인 포인트 */
+  --coral-soft:#f8a48b;   /* 연한 코랄 */
+  --pink:#f7c9c0;         /* 연한 핑크(리본/달력) */
+  --green:#5aa86b;        /* 여름 청량 그린 보조 */
+  --green-soft:#cfe8d2;   /* 연한 민트 */
+  --green-bg:#eef7ec;     /* 섹션 배경용 연민트 */
+  --shadow:0 12px 40px rgba(120,110,90,.10);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:var(--bg);color:var(--ink)}
@@ -59,41 +58,17 @@ body{
 .hand{font-family:'Gaegu',cursive}
 .melody{font-family:'Hi Melody',cursive}
 
-/* 은은하게 떨어지는 가든 잎사귀 */
+/* 떨어지는 여름 잎사귀 + 코랄 하트 */
 .petals{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden;max-width:460px;margin:0 auto;left:0;right:0}
 .petal{position:absolute;top:-30px;width:14px;height:11px;
-  background:radial-gradient(circle at 30% 30%, #8fce7d, #4a9a4f);
-  border-radius:0 80% 0 80%;opacity:.5;animation:fall linear infinite}
-.petal.lite{width:11px;height:9px;background:radial-gradient(circle at 30% 30%, #bfe3ad, #7fc46b);opacity:.45}
+  background:radial-gradient(circle at 30% 30%, #7fc46b, #4a9a4f);
+  border-radius:0 80% 0 80%;opacity:.6;animation:fall linear infinite}
+.petal.heart{width:13px;height:13px;background:none;opacity:.7}
+.petal.heart::before{content:"♥";color:var(--coral-soft);font-size:13px;position:absolute;top:-4px;left:0}
 @keyframes fall{
   0%{transform:translateY(-30px) rotate(0deg);opacity:0}
-  10%{opacity:.5}
-  100%{transform:translateY(105vh) rotate(420deg);opacity:.18}
-}
-
-/* ===== 풍선 피날레 (천장 오픈 연출) ===== */
-.finale{position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#eef6ec 0%,#dcefe0 55%,#cbe6cf 100%);
-  padding:64px 30px 70px;text-align:center}
-.finale .sky-text{font-family:'Hi Melody',cursive;font-size:18px;color:var(--green-deep);
-  position:relative;z-index:3;line-height:1.9}
-.finale .sky-title{font-family:'Gaegu',cursive;font-weight:700;font-size:24px;color:var(--ink);
-  position:relative;z-index:3;margin-bottom:8px}
-/* 떠오르는 풍선들 */
-.balloons{position:absolute;inset:0;pointer-events:none;z-index:1}
-.balloon{position:absolute;bottom:-60px;width:26px;height:33px;border-radius:50% 50% 48% 48%;
-  opacity:0;animation:rise linear infinite}
-.balloon::after{content:"";position:absolute;bottom:-7px;left:50%;width:1px;height:9px;
-  background:rgba(120,130,120,.5);transform:translateX(-50%)}
-.balloon.c-coral{background:radial-gradient(circle at 35% 30%, #f3b6a4, #e8896f)}
-.balloon.c-green{background:radial-gradient(circle at 35% 30%, #9ed694, #4f9a63)}
-.balloon.c-white{background:radial-gradient(circle at 35% 30%, #ffffff, #e4efe1);border:1px solid #d4e6d0}
-.balloon.c-mint{background:radial-gradient(circle at 35% 30%, #d3f0d8, #9fd9a8)}
-@keyframes rise{
-  0%{transform:translateY(0) translateX(0) rotate(-6deg);opacity:0}
-  12%{opacity:.92}
-  85%{opacity:.92}
-  100%{transform:translateY(-118vh) translateX(18px) rotate(6deg);opacity:0}
+  10%{opacity:.6}
+  100%{transform:translateY(105vh) rotate(420deg);opacity:.2}
 }
 
 section{padding:60px 30px;position:relative}
@@ -101,28 +76,28 @@ section{padding:60px 30px;position:relative}
 .reveal.show{opacity:1;transform:none}
 
 .eng{font-family:'Cormorant Garamond',serif;letter-spacing:.22em;
-  text-transform:uppercase;font-size:13px;color:var(--green);font-weight:500}
-.divider{width:40px;height:2px;background:var(--green-soft);margin:18px auto;border-radius:2px}
+  text-transform:uppercase;font-size:13px;color:var(--coral);font-weight:500}
+.divider{width:40px;height:2px;background:var(--coral-soft);margin:18px auto;border-radius:2px}
 .center{text-align:center}
 .title{font-family:'Gaegu',cursive;font-weight:700;font-size:24px;margin-bottom:6px;color:var(--ink)}
 
 /* 손그림 하트 구분선 */
-.heart-line{text-align:center;color:var(--green);font-size:15px;letter-spacing:8px;margin:14px 0}
+.heart-line{text-align:center;color:var(--coral);font-size:15px;letter-spacing:8px;margin:14px 0}
 
 /* ===== HERO (종이청첩장 우측 페이지 느낌) ===== */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
   align-items:center;text-align:center;padding:40px 30px;
   background:linear-gradient(180deg,#ffffff 0%,#f3faf0 100%)}
 .hero .card{width:100%;position:relative;padding:46px 26px;background:#fff;border-radius:6px;
-  border:2.5px solid var(--green-soft)}
+  border:2.5px solid var(--coral-soft)}
 /* 손그림 느낌 모서리 리본 */
-.hero .ribbon{font-size:30px;color:var(--green);margin-bottom:6px;line-height:1}
+.hero .ribbon{font-size:30px;color:var(--coral);margin-bottom:6px;line-height:1}
 .hero .bigdate{font-family:'Gaegu',cursive;font-weight:700;font-size:40px;letter-spacing:.02em;
   color:var(--ink);margin:4px 0 22px}
 .hero .main-photo{width:200px;height:260px;margin:0 auto 18px;
   border-radius:100px 100px 8px 8px;       /* 아치형: 상단 둥글게 */
   overflow:hidden;position:relative;
-  border:2px solid var(--green-soft);
+  border:2px solid var(--coral-soft);
   background:repeating-linear-gradient(45deg,#f0f6ee,#f0f6ee 12px,#e4efe1 12px,#e4efe1 24px);
   display:flex;align-items:center;justify-content:center}
 .hero .main-photo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -130,9 +105,9 @@ section{padding:60px 30px;position:relative}
 .hero .names{font-family:'Gaegu',cursive;font-weight:700;font-size:30px;color:var(--ink);margin:8px 0}
 .hero .names .heart{color:var(--coral);margin:0 8px}
 .hero .invite{font-family:'Hi Melody',cursive;font-size:19px;color:var(--ink-soft);margin-top:10px}
-.hero .time{font-family:'Gaegu',cursive;font-size:18px;color:var(--green-deep);margin-top:6px;font-weight:700}
-/* 코너 잎사귀 */
-.hero .corner{position:absolute;color:var(--green);font-size:15px;opacity:.7}
+.hero .time{font-family:'Gaegu',cursive;font-size:18px;color:var(--coral);margin-top:6px;font-weight:700}
+/* 코너 하트 */
+.hero .corner{position:absolute;color:var(--coral);font-size:16px}
 .hero .c1{top:12px;left:14px}.hero .c2{top:12px;right:14px}
 .hero .c3{bottom:12px;left:14px}.hero .c4{bottom:12px;right:14px}
 
@@ -146,7 +121,7 @@ section{padding:60px 30px;position:relative}
 .greet .verse{margin:22px 0;font-size:16px;color:var(--ink);font-family:'Hi Melody',cursive;font-size:19px;line-height:1.9}
 .parents{margin-top:30px;font-size:15px;color:var(--ink-soft);line-height:2.4}
 .parents b{color:var(--ink);font-weight:700}
-.parents .nm{font-family:'Gaegu',cursive;font-weight:700;font-size:19px;color:var(--green-deep);margin-left:6px}
+.parents .nm{font-family:'Gaegu',cursive;font-weight:700;font-size:19px;color:var(--coral);margin-left:6px}
 
 /* ===== GALLERY SLIDER ===== */
 .slider{margin-top:10px;position:relative;border-radius:10px;overflow:hidden;
@@ -323,9 +298,9 @@ const CONFIG = {
   <!-- HERO -->
   <section class="hero">
     <div class="card reveal">
-      <span class="corner c1">🌿</span><span class="corner c2">🌿</span>
-      <span class="corner c3">🌿</span><span class="corner c4">🌿</span>
-      <div class="ribbon">🌿</div>
+      <span class="corner c1">♥</span><span class="corner c2">♥</span>
+      <span class="corner c3">♥</span><span class="corner c4">♥</span>
+      <div class="ribbon">🎀</div>
       <div class="bigdate" id="bigDate"></div>
       <div class="main-photo" id="mainPhoto">
         <!-- CONFIG.mainPhoto 경로가 있으면 사진, 없으면 placeholder가 표시됩니다 -->
@@ -342,10 +317,10 @@ const CONFIG = {
     <div class="reveal">
       <div class="lock-logo">
         <span class="nm" id="logoG"></span>
-        <svg viewBox="0 0 32 32" fill="none" stroke="#4f9a63" stroke-width="2.2">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#f2603a" stroke-width="2.2">
           <rect x="7" y="14" width="18" height="14" rx="3"/>
           <path d="M11 14 v-3 a5 5 0 0 1 10 0 v3"/>
-          <circle cx="16" cy="21" r="2" fill="#4f9a63"/>
+          <circle cx="16" cy="21" r="2" fill="#f2603a"/>
         </svg>
         <span class="nm" id="logoB"></span>
       </div>
@@ -466,18 +441,9 @@ const CONFIG = {
     </div>
   </section>
 
-  <!-- FINALE (천장 오픈 + 풍선 피날레) -->
-  <section class="finale">
-    <div class="balloons" id="balloons"></div>
-    <div class="reveal">
-      <div class="sky-title">하늘이 열리는 순간</div>
-      <div class="sky-text">천장이 열리고 축복의 풍선이 떠오르는<br>그 순간을 여러분과 함께하고 싶습니다.</div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <div class="footer">
-    <div class="heart-line">🌿 ♥ 🌿</div>
+    <div class="heart-line">♥ ♥ ♥</div>
     <div class="fnames" id="footerNames"></div>
     <div class="msg">눈부신 여름날, 함께해 주셔서 감사합니다.</div>
   </div>
@@ -713,33 +679,16 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* ---- 가든 잎사귀 생성 ---- */
+/* ---- 잎사귀/하트 생성 ---- */
 (function petals(){
   const box=$("#petals");
-  for(let i=0;i<12;i++){
-    const p=document.createElement('div');p.className='petal'+(i%2===0?' lite':'');
+  for(let i=0;i<14;i++){
+    const p=document.createElement('div');p.className='petal'+(i%3===0?' heart':'');
     p.style.left=Math.random()*100+'%';
-    p.style.animationDuration=(8+Math.random()*7)+'s';
+    p.style.animationDuration=(7+Math.random()*7)+'s';
     p.style.animationDelay=(Math.random()*8)+'s';
     p.style.transform=`scale(${.6+Math.random()*.7})`;
     box.appendChild(p);
-  }
-})();
-
-/* ---- 풍선 피날레 생성 (천장 오픈 연출) ---- */
-(function balloons(){
-  const box=$("#balloons");
-  if(!box) return;
-  const colors=['c-coral','c-green','c-white','c-mint'];
-  const N=16;
-  for(let i=0;i<N;i++){
-    const b=document.createElement('div');
-    b.className='balloon '+colors[i%colors.length];
-    b.style.left=(4+Math.random()*92)+'%';
-    b.style.animationDuration=(7+Math.random()*6)+'s';
-    b.style.animationDelay=(Math.random()*7)+'s';
-    b.style.transform=`scale(${.7+Math.random()*.8})`;
-    box.appendChild(b);
   }
 })();
 </script>

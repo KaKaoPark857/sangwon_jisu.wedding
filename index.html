@@ -26,7 +26,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gamja+Flower&family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Hi+Melody&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gamja+Flower&family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Gowun+Batang:wght@400;700&family=Hi+Melody&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -115,7 +115,7 @@ section{padding:60px 30px;position:relative}
   display:flex;align-items:center;justify-content:center}
 .hero .main-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .hero .main-photo .ph-text{font-family:'Jua',sans-serif;color:var(--ink-soft);font-size:14px}
-.hero .names{font-family:'Jua',sans-serif;font-weight:400;font-size:clamp(34px,11vw,44px);color:#1a1a1a;margin:10px 0;letter-spacing:.01em}
+.hero .names{font-family:'Gowun Batang',serif;font-weight:700;font-size:clamp(32px,10vw,42px);color:#1a1a1a;margin:10px 0;letter-spacing:.02em}
 .hero .names .heart{color:var(--coral);margin:0 8px}
 .hero .invite{font-family:'Hi Melody',cursive;font-size:19px;color:var(--ink-soft);margin-top:10px}
 .hero .time{font-family:'Jua',sans-serif;font-size:18px;color:var(--coral);margin-top:6px;font-weight:700}
@@ -284,31 +284,34 @@ section{padding:60px 30px;position:relative}
 
 /* 좌/우 문 패널 (배경) */
 .door{position:absolute;top:0;height:100%;width:50%;background:#fffdfb;z-index:1;
-  transition:transform 1.25s cubic-bezier(.76,0,.24,1)}
+  transition:transform 1.15s cubic-bezier(.76,0,.24,1)}
 .door-l{left:0}
 .door-r{right:0}
-/* 문 안쪽 가장자리에 얇은 코랄 라인 */
-.door-edge{position:absolute;top:0;height:100%;width:1px;background:var(--coral-soft);opacity:.5}
-.door-l .door-edge{right:0}
-.door-r .door-edge{left:0}
-/* 열림: 좌우로 미끄러져 빠짐 */
-.intro.open .door-l{transform:translateX(-100%)}
-.intro.open .door-r{transform:translateX(100%)}
+/* 중앙 분할선: 평소 숨김 → Open 시 가운데서 위아래로 그어짐 */
+.center-seam{position:absolute;top:0;left:50%;width:1.5px;height:100%;z-index:3;
+  background:var(--coral);transform:translateX(-50%) scaleY(0);transform-origin:center center;
+  transition:transform .55s cubic-bezier(.7,0,.3,1);opacity:.85}
+.intro.open .center-seam{transform:translateX(-50%) scaleY(1)}
+/* 문 열림: 선이 그어진 뒤(0.5s 지연) 좌우로 미끄러짐 */
+.intro.open .door-l{transform:translateX(-100%);transition-delay:.5s}
+.intro.open .door-r{transform:translateX(100%);transition-delay:.5s}
+/* 열리는 순간 분할선은 양옆 문을 따라 사라짐 */
+.intro.open .center-seam{transition:transform .55s cubic-bezier(.7,0,.3,1),opacity .4s ease .55s;opacity:0}
 
 /* 중앙 내용 */
 .intro-content{position:relative;z-index:2;text-align:center;padding:30px;
-  animation:introFade 1.2s ease both;transition:opacity .7s ease,transform .7s ease}
+  animation:introFade 1.2s ease both;transition:opacity .35s ease,transform .35s ease}
 @keyframes introFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.intro.open .intro-content{opacity:0;transform:translateY(-10px)}
-.intro-eng{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.42em;
-  color:var(--ink-soft);text-transform:uppercase;padding-left:.42em}
+.intro.open .intro-content{opacity:0;transform:translateY(-12px);transition:opacity .3s ease,transform .3s ease}
+.intro-eng{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;
+  color:var(--coral);text-transform:uppercase;padding-left:.2em;font-weight:600}
 .intro-line{width:1px;height:34px;background:var(--coral-soft);margin:20px auto}
-.intro-names{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;
-  color:var(--ink);line-height:1.5;letter-spacing:.02em}
-.intro-names .amp{display:block;font-style:italic;font-size:17px;color:var(--coral);
-  margin:4px 0;font-weight:400;letter-spacing:.05em}
-.intro-date{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.18em;
-  color:var(--ink-soft);margin-top:24px}
+.intro-names{font-family:'Gowun Batang',serif;font-size:32px;font-weight:700;
+  color:var(--ink);line-height:1.5;letter-spacing:.03em}
+.intro-names .amp{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:17px;color:var(--coral);margin:6px 0;font-weight:400;letter-spacing:.05em}
+.intro-date{font-family:'Gowun Dodum',sans-serif;font-size:14px;letter-spacing:.06em;
+  color:var(--ink);margin-top:24px}
 .enter-btn{margin-top:40px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.3em;
   text-transform:uppercase;padding:13px 38px;background:transparent;color:var(--coral-deep);
   border:1px solid var(--coral-soft);border-radius:0;cursor:pointer;
@@ -433,12 +436,10 @@ const CONFIG = {
 <!-- 인트로 오버레이 (미니멀 양문 열림) -->
 <div class="intro" id="intro">
   <!-- 좌/우 문 패널 -->
-  <div class="door door-l" id="doorL">
-    <div class="door-edge"></div>
-  </div>
-  <div class="door door-r" id="doorR">
-    <div class="door-edge"></div>
-  </div>
+  <div class="door door-l" id="doorL"></div>
+  <div class="door door-r" id="doorR"></div>
+  <!-- 중앙 분할선 (Open 시 그어지며 나타남) -->
+  <div class="center-seam" id="centerSeam"></div>
   <!-- 중앙 내용 (문 위에 표시) -->
   <div class="intro-content" id="introContent">
     <div class="intro-eng">THE WEDDING OF</div>
@@ -1056,11 +1057,11 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     if(opened) return; opened=true;
     el.classList.add('open');          // 좌우 문 열림 + 중앙 내용 페이드
     document.body.style.overflow='hidden';
-    setTimeout(()=>{                   // 문 열림(1.25s) 후 오버레이 제거
+    setTimeout(()=>{                   // 선 그음(.55s)+지연(.5s)+문 열림(1.15s) 후 제거
       el.classList.add('gone');
       document.body.style.overflow='';
       setTimeout(()=>{ el.style.display='none'; },600);
-    },1300);
+    },1900);
   }
   btn.addEventListener('click',enter);
   document.body.style.overflow='hidden';   // 입장 전 스크롤 잠금

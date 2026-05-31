@@ -10,6 +10,10 @@
      - 갤러리 사진은 CONFIG.gallery 배열에 경로를 넣으면 자동 반영됩니다.
      ========================================================= -->
 
+<!-- 카카오톡 공유 SDK (선택). 키 미입력 시 자동 비활성화됩니다. -->
+<script src="https://t1.kakao.com/kakao_js_sdk/2.7.2/kakao.min.js"
+        integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
+        crossorigin="anonymous"></script>
 <!-- 카카오 지도 SDK는 키가 있을 때만 동적으로 로드합니다(아래 script 참고). -->
 <!-- QR 코드 생성 라이브러리 (오픈소스 qrcodejs) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -110,7 +114,7 @@ section{padding:60px 30px;position:relative}
   display:flex;align-items:center;justify-content:center}
 .hero .main-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .hero .main-photo .ph-text{font-family:'Jua',sans-serif;color:var(--ink-soft);font-size:14px}
-.hero .names{font-family:'Jua',sans-serif;font-weight:400;font-size:clamp(34px,11vw,44px);color:#1a1a1a;margin:10px 0;letter-spacing:.01em}
+.hero .names{font-family:'Jua',sans-serif;font-weight:700;font-size:clamp(34px,11vw,44px);color:var(--coral-deep);margin:10px 0;letter-spacing:.01em}
 .hero .names .heart{color:var(--coral);margin:0 8px}
 .hero .invite{font-family:'Hi Melody',cursive;font-size:19px;color:var(--ink-soft);margin-top:10px}
 .hero .time{font-family:'Jua',sans-serif;font-size:18px;color:var(--coral);margin-top:6px;font-weight:700}
@@ -209,51 +213,10 @@ section{padding:60px 30px;position:relative}
   background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}
 .acc-item .info{font-size:13.5px}
 .acc-item .info b{display:block;font-weight:700;margin-bottom:2px;color:#000}
-.acc-item .info b .acc-rel{font-weight:400;font-size:12px;color:var(--coral);margin-left:5px}
-.acc-empty{text-align:center;color:var(--ink-soft);font-size:13px;padding:12px 0}
 .acc-item .info span{color:var(--ink-soft)}
 .acc-item button{font-family:'Jua',sans-serif;font-weight:700;font-size:13px;padding:7px 13px;
   border:1.5px solid var(--coral-soft);background:#fff;color:var(--coral);border-radius:8px;cursor:pointer}
 .acc-item button:active{background:var(--coral);color:#fff}
-
-/* ===== CONTACT (전화/문자) ===== */
-.contact-wrap{display:flex;flex-direction:column;gap:14px;margin-top:8px}
-.contact-row{background:var(--green-bg);border-radius:12px;padding:14px 16px}
-.contact-row .who{font-family:'Jua',sans-serif;font-size:16px;color:var(--ink);margin-bottom:10px}
-.contact-row .who .role{font-size:13px;color:var(--coral);margin-right:6px}
-.contact-btns{display:flex;gap:8px}
-.contact-btns a{flex:1;text-align:center;padding:10px 0;border-radius:8px;text-decoration:none;
-  font-family:'Jua',sans-serif;font-size:14px;border:1.5px solid var(--coral-soft)}
-.contact-btns .call{background:var(--coral);color:#fff;border-color:var(--coral)}
-.contact-btns .sms{background:#fff;color:var(--coral)}
-.contact-btns a:active{opacity:.8}
-
-/* ===== BGM 버튼 (우상단 고정) ===== */
-.bgm-btn{position:fixed;top:14px;right:calc(50% - 230px + 14px);z-index:60;width:42px;height:42px;
-  border-radius:50%;border:none;background:rgba(255,255,255,.9);box-shadow:0 2px 10px rgba(150,110,90,.25);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--coral)}
-@media(max-width:480px){.bgm-btn{right:14px}}
-.bgm-btn.spin{animation:bgmspin 3s linear infinite}
-@keyframes bgmspin{to{transform:rotate(360deg)}}
-
-/* ===== RSVP ===== */
-.rsvp-form{display:flex;flex-direction:column;gap:10px;margin-top:8px;text-align:left}
-.rsvp-seg{display:flex;gap:8px}
-.rsvp-seg button{flex:1;padding:11px 0;border:1.5px solid var(--coral-soft);background:#fff;
-  color:var(--ink-soft);border-radius:8px;font-family:'Jua',sans-serif;font-size:14px;cursor:pointer}
-.rsvp-seg button.on{background:var(--coral);color:#fff;border-color:var(--coral)}
-.rsvp-form input{font-family:'Gowun Dodum',sans-serif;font-size:14px;padding:11px 13px;
-  border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
-.rsvp-form input:focus{outline:none;border-color:var(--coral-soft)}
-.rsvp-count{display:flex;justify-content:space-between;align-items:center;
-  background:var(--green-bg);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--ink)}
-.counter{display:flex;align-items:center;gap:12px}
-.counter button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--coral-soft);
-  background:#fff;color:var(--coral);font-size:16px;cursor:pointer;line-height:1}
-.counter .unit{font-size:13px;color:var(--ink-soft)}
-.rsvp-form #rsvpSubmit{font-family:'Jua',sans-serif;font-size:15px;padding:12px;background:var(--coral);
-  color:#fff;border:none;border-radius:8px;cursor:pointer;margin-top:2px}
-.rsvp-form #rsvpSubmit:active{background:var(--coral-deep)}
 
 /* ===== GUESTBOOK ===== */
 .gb-form{display:flex;flex-direction:column;gap:8px;margin-top:8px}
@@ -284,6 +247,7 @@ section{padding:60px 30px;position:relative}
 .share-btns{display:flex;gap:8px}
 .share-btns button{flex:1;font-family:'Jua',sans-serif;font-weight:700;font-size:15px;padding:13px 0;
   border-radius:10px;border:none;cursor:pointer}
+.btn-kakao{background:#fee500;color:#3b1e1e}
 .btn-link{background:#fff;color:var(--coral);border:1.5px solid var(--coral-soft)!important}
 .footer{text-align:center;padding:46px 30px 60px;color:var(--ink-soft);font-size:13px;
   background:linear-gradient(180deg,#fffdfb,#fdeee8)}
@@ -304,20 +268,10 @@ section{padding:60px 30px;position:relative}
 <script id="config">
 const CONFIG = {
   // ── 기본 정보 ──────────────────────────────
-  groom:  { name: "박상원", displayName: "상원", father: "박광순", mother: "노재정", order: "장남",
-            tel: "010-1234-5678",
-            accounts: [
-              { rel: "신랑", bank: "국민은행", number: "123-456-789000", holder: "박상원" },
-              { rel: "신랑 아버지", bank: "국민은행", number: "", holder: "박광순" },
-              { rel: "신랑 어머니", bank: "국민은행", number: "", holder: "노재정" }
-            ] },
-  bride:  { name: "이지수", displayName: "지수", father: "이창환", mother: "김정화", order: "차녀",
-            tel: "010-8765-4321",
-            accounts: [
-              { rel: "신부", bank: "국민은행", number: "110-234-567890", holder: "이지수" },
-              { rel: "신부 아버지", bank: "국민은행", number: "", holder: "이창환" },
-              { rel: "신부 어머니", bank: "국민은행", number: "", holder: "김정화" }
-            ] },
+  groom:  { name: "상원", displayName: "상원", father: "박광순", mother: "노재정", order: "장남",
+            account: { bank: "국민은행", number: "123-456-789000", holder: "박상원" } },
+  bride:  { name: "지수", displayName: "지수", father: "이창환", mother: "김정화", order: "차녀",
+            account: { bank: "국민은행", number: "110-234-567890", holder: "이지수" } },
 
   // ── 예식 일시/장소 ─────────────────────────
   wedding: {
@@ -356,10 +310,6 @@ const CONFIG = {
   galleryCount: 20,        // 사진 경로가 비어있을 때 보여줄 placeholder 장수
   galleryCols: 4,          // 타일 칸 수 (4 = 4×5, 3 = 3×7)
 
-  // ── 배경음악 (음원 준비되면 경로 입력. 비우면 버튼만 표시) ──
-  //   예: "music/bgm.mp3"  저장소 music/ 폴더에 올린 뒤 경로 입력
-  bgm: "",
-
   // ── 청첩장 주소 (QR 코드 생성에 사용) ──
   siteUrl: "https://kakaopark857.github.io/sangwon_jisu.wedding/",
 
@@ -371,10 +321,6 @@ const CONFIG = {
 <div class="petals" id="petals"></div>
 
 <div class="wrap">
-
-  <!-- BGM 버튼 -->
-  <button class="bgm-btn" id="bgmBtn" aria-label="배경음악">♪</button>
-  <audio id="bgmAudio" loop></audio>
 
   <!-- HERO -->
   <section class="hero">
@@ -498,50 +444,6 @@ const CONFIG = {
     </div>
   </section>
 
-  <!-- CONTACT (전화/문자) -->
-  <section class="center">
-    <div class="reveal">
-      <div class="eng">Contact</div>
-      <div class="divider"></div>
-      <div class="title">연락하기</div>
-      <p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px" class="melody">
-        축하 인사를 전하고 싶으신 분들을 위해 연락처를 안내드립니다.</p>
-      <div class="contact-wrap" id="contactWrap"></div>
-    </div>
-  </section>
-
-  <!-- RSVP (참석 의사) -->
-  <section class="center">
-    <div class="reveal">
-      <div class="eng">RSVP</div>
-      <div class="divider"></div>
-      <div class="title">참석 의사 전달</div>
-      <p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px" class="melody">
-        참석 여부를 미리 알려주시면<br>준비에 큰 도움이 됩니다.</p>
-      <div class="rsvp-form">
-        <div class="rsvp-seg" id="rsvpSide">
-          <button type="button" data-v="신랑측" class="on">신랑측</button>
-          <button type="button" data-v="신부측">신부측</button>
-        </div>
-        <div class="rsvp-seg" id="rsvpAttend">
-          <button type="button" data-v="참석" class="on">참석</button>
-          <button type="button" data-v="불참">불참</button>
-        </div>
-        <input id="rsvpName" type="text" placeholder="성함" maxlength="12" />
-        <div class="rsvp-count">
-          <span>참석 인원</span>
-          <div class="counter">
-            <button type="button" id="rsvpMinus">−</button>
-            <span id="rsvpNum">1</span>
-            <button type="button" id="rsvpPlus">＋</button>
-            <span class="unit">명</span>
-          </div>
-        </div>
-        <button id="rsvpSubmit">참석 의사 전달하기</button>
-      </div>
-    </div>
-  </section>
-
   <!-- GUESTBOOK -->
   <section>
     <div class="reveal center">
@@ -581,7 +483,8 @@ const CONFIG = {
       <div class="eng">Share</div>
       <div class="divider"></div>
       <div class="share-btns">
-        <button class="btn-link" id="shareLink">청첩장 링크 복사</button>
+        <button class="btn-kakao" id="shareKakao">카카오톡 공유</button>
+        <button class="btn-link" id="shareLink">링크 복사</button>
       </div>
     </div>
   </section>
@@ -732,18 +635,15 @@ $("#calMon").textContent = `${C.wedding.month}월`;
   tick(); setInterval(tick,1000);
 })();
 
-/* ---- 계좌번호 (본인+부모님, 번호 있는 것만 표시) ---- */
-function accHtml(p){
-  const list = (p.accounts || []).filter(a => a.number && a.number.trim());
-  if(!list.length) return '<div class="acc-empty">등록된 계좌가 없습니다</div>';
-  return list.map(a=>`
-    <div class="acc-item"><div class="info">
-      <b>${a.holder} <span class="acc-rel">${a.rel}</span></b>
-      <span>${a.bank} ${a.number}</span></div>
-    <button data-copy="${a.bank} ${a.number}">복사</button></div>`).join('');
+/* ---- 계좌번호 ---- */
+function accHtml(side,p){
+  return `<div class="acc-side">${side}</div>
+    <div class="acc-item"><div class="info"><b>${p.account.holder}</b>
+    <span>${p.account.bank} ${p.account.number}</span></div>
+    <button data-copy="${p.account.bank} ${p.account.number}">복사</button></div>`;
 }
-$("#accGroom").innerHTML = accHtml(C.groom);
-$("#accBride").innerHTML = accHtml(C.bride);
+$("#accGroom").innerHTML = accHtml("신랑", C.groom);
+$("#accBride").innerHTML = accHtml("신부", C.bride);
 document.querySelectorAll('.acc-toggle').forEach(b=>{
   b.addEventListener('click',()=>$('#'+b.dataset.target).classList.toggle('open'));
 });
@@ -760,90 +660,30 @@ document.addEventListener('click',e=>{
   if(c) copy(c.dataset.copy,'계좌번호가 복사되었습니다');
 });
 
-/* ---- 방명록 + RSVP (Firebase Firestore) ----
-   Firebase 초기화는 하단 <script type="module">에서 처리하고,
-   window.WDB 로 저장/조회 함수를 노출합니다.
-   Firestore 미연결 시 localStorage로 자동 폴백합니다. */
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-
-/* 방명록 렌더 */
-function renderGBList(list){
-  $("#gbList").innerHTML = (list && list.length)
+/* ---- 방명록 (localStorage 기반) ----
+   ※ 같은 기기/브라우저에서만 보입니다. 추후 Firebase 등으로 교체 예정. */
+const GB_KEY='wedding_guestbook_v1';
+function loadGB(){try{return JSON.parse(localStorage.getItem(GB_KEY))||[]}catch{return[]}}
+function renderGB(){
+  const list=loadGB();
+  $("#gbList").innerHTML = list.length
     ? list.map(e=>`<div class="gb-entry"><div class="top">
-        <span class="who">${esc(e.name)}</span><span class="when">${esc(e.when||'')}</span></div>
+        <span class="who">${esc(e.name)}</span><span class="when">${e.when}</span></div>
         <div class="msg">${esc(e.msg)}</div></div>`).join('')
     : `<div class="gb-empty">첫 번째 축하 메시지를 남겨주세요 ♥</div>`;
 }
-
-/* localStorage 폴백 */
-const GB_KEY='wedding_guestbook_v1';
-function gbLocalLoad(){try{return JSON.parse(localStorage.getItem(GB_KEY))||[]}catch{return[]}}
-function gbLocalSave(list){localStorage.setItem(GB_KEY,JSON.stringify(list));}
-
-async function loadGuestbook(){
-  if(window.WDB && window.WDB.ready){
-    try{ renderGBList(await window.WDB.listGuestbook()); return; }
-    catch(e){ /* 실패 시 폴백 */ }
-  }
-  renderGBList(gbLocalLoad());
-}
-
-$("#gbSubmit").addEventListener('click',async ()=>{
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+$("#gbSubmit").addEventListener('click',()=>{
   const name=$("#gbName").value.trim(), msg=$("#gbMsg").value.trim();
   if(!name||!msg){toast('이름과 메시지를 입력해주세요');return;}
+  const list=loadGB();
   const now=new Date();
-  const entry={name,msg,when:`${now.getMonth()+1}.${now.getDate()}`,ts:now.getTime()};
-  const btn=$("#gbSubmit"); btn.disabled=true;
-  try{
-    if(window.WDB && window.WDB.ready){ await window.WDB.addGuestbook(entry); }
-    else{ const l=gbLocalLoad(); l.unshift(entry); gbLocalSave(l); }
-    $("#gbName").value='';$("#gbMsg").value='';
-    await loadGuestbook(); toast('축하 메시지가 등록되었습니다');
-  }catch(e){ toast('등록에 실패했습니다. 잠시 후 다시 시도해 주세요'); }
-  finally{ btn.disabled=false; }
+  list.unshift({name,msg,when:`${now.getMonth()+1}.${now.getDate()}`});
+  localStorage.setItem(GB_KEY,JSON.stringify(list));
+  $("#gbName").value='';$("#gbMsg").value='';
+  renderGB();toast('축하 메시지가 등록되었습니다');
 });
-loadGuestbook();
-
-/* RSVP 로직 */
-(function rsvp(){
-  // 세그먼트 버튼(신랑측/신부측, 참석/불참)
-  function bindSeg(id){
-    const seg=$('#'+id);
-    seg.addEventListener('click',e=>{
-      const b=e.target.closest('button'); if(!b)return;
-      [...seg.children].forEach(x=>x.classList.remove('on'));
-      b.classList.add('on');
-    });
-    return ()=>seg.querySelector('.on').dataset.v;
-  }
-  const getSide=bindSeg('rsvpSide');
-  const getAttend=bindSeg('rsvpAttend');
-  // 인원 카운터
-  let n=1;
-  const numEl=$("#rsvpNum");
-  $("#rsvpMinus").addEventListener('click',()=>{ if(n>1){n--;numEl.textContent=n;} });
-  $("#rsvpPlus").addEventListener('click',()=>{ if(n<20){n++;numEl.textContent=n;} });
-  // 제출
-  $("#rsvpSubmit").addEventListener('click',async ()=>{
-    const name=$("#rsvpName").value.trim();
-    if(!name){toast('성함을 입력해주세요');return;}
-    const data={side:getSide(),attend:getAttend(),name,count:n,ts:Date.now()};
-    const btn=$("#rsvpSubmit"); btn.disabled=true;
-    try{
-      if(window.WDB && window.WDB.ready){ await window.WDB.addRsvp(data); }
-      else{
-        const K='wedding_rsvp_v1';
-        let l=[]; try{l=JSON.parse(localStorage.getItem(K))||[]}catch{}
-        l.unshift(data); localStorage.setItem(K,JSON.stringify(l));
-      }
-      $("#rsvpName").value=''; toast('참석 의사가 전달되었습니다. 감사합니다!');
-    }catch(e){ toast('전달에 실패했습니다. 잠시 후 다시 시도해 주세요'); }
-    finally{ btn.disabled=false; }
-  });
-})();
-
-/* Firebase 준비 완료 시 방명록 다시 로드 */
-window.addEventListener('wdb-ready',()=>loadGuestbook());
+renderGB();
 
 /* ---- 카카오 지도 (JS 키 있을 때만) ---- */
 if(C.kakaoJsKey){
@@ -867,38 +707,33 @@ if(C.kakaoJsKey){
   $("#map").textContent='지도: CONFIG.kakaoJsKey 입력 후 표시됩니다';
 }
 
+/* ---- 카카오톡 공유 (JS 키 있을 때만) ---- */
+const shareKakaoBtn=$("#shareKakao");
+if(C.kakaoJsKey && window.Kakao){
+  if(!Kakao.isInitialized()) Kakao.init(C.kakaoJsKey);
+  shareKakaoBtn.addEventListener('click',()=>{
+    // mainPhoto가 절대 URL(http로 시작)이면 공유 이미지로 사용
+    let imgUrl = '';
+    if(C.mainPhoto && /^https?:\/\//.test(C.mainPhoto)) imgUrl = C.mainPhoto;
+    else if(C.mainPhoto && C.siteUrl) imgUrl = C.siteUrl.replace(/\/$/,'') + '/' + C.mainPhoto.replace(/^\//,'');
+    const content = {
+      title:`${C.groom.displayName} ♥ ${C.bride.displayName} 결혼합니다`,
+      description:C.wedding.dateText+'\n'+C.wedding.placeName,
+      link:{mobileWebUrl:location.href,webUrl:location.href}
+    };
+    if(imgUrl) content.imageUrl = imgUrl;
+    Kakao.Share.sendDefault({
+      objectType:'feed',
+      content:content,
+      buttons:[{title:'청첩장 보기',link:{mobileWebUrl:location.href,webUrl:location.href}}]
+    });
+  });
+}else{
+  shareKakaoBtn.addEventListener('click',()=>toast('카카오 JS 키 입력 후 사용 가능합니다'));
+}
+
 /* ---- 링크 복사 ---- */
 $("#shareLink").addEventListener('click',()=>copy(location.href,'링크가 복사되었습니다'));
-
-/* ---- 전화/문자 연락처 버튼 ---- */
-(function contact(){
-  const wrap=$("#contactWrap");
-  function row(role,p){
-    const tel=(p.tel||'').replace(/[^0-9]/g,'');
-    return `<div class="contact-row">
-      <div class="who"><span class="role">${role}</span>${p.name}</div>
-      <div class="contact-btns">
-        <a class="call" href="tel:${tel}">📞 전화</a>
-        <a class="sms" href="sms:${tel}">✉️ 문자</a>
-      </div></div>`;
-  }
-  wrap.innerHTML = row('신랑', C.groom) + row('신부', C.bride);
-})();
-
-/* ---- 배경음악(BGM) ---- */
-(function bgm(){
-  const btn=$("#bgmBtn"), audio=$("#bgmAudio");
-  if(C.bgm){ audio.src=C.bgm; }
-  let playing=false;
-  btn.addEventListener('click',()=>{
-    if(!C.bgm){ toast('음원이 아직 등록되지 않았습니다'); return; }
-    if(playing){ audio.pause(); btn.classList.remove('spin'); playing=false; }
-    else{
-      audio.play().then(()=>{ btn.classList.add('spin'); playing=true; })
-        .catch(()=>toast('재생할 수 없습니다'));
-    }
-  });
-})();
 
 /* ---- QR 코드 생성 ---- */
 (function makeQR(){
@@ -935,56 +770,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }
 })();
 
-</script>
-
-<!-- =========================================================
-     Firebase 연동 (방명록·RSVP 저장)
-     - 단일 HTML/GitHub Pages 구조이므로 CDN 모듈 방식 사용
-     - 아래 firebaseConfig는 공개되어도 되는 값(보안은 Firestore 규칙으로 관리)
-     ========================================================= -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp }
-  from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD0NDzSZnSBynhuhlpryV9ta4dhMuphLbg",
-  authDomain: "wedding-sw-js-260823.firebaseapp.com",
-  projectId: "wedding-sw-js-260823",
-  storageBucket: "wedding-sw-js-260823.firebasestorage.app",
-  messagingSenderId: "990437928831",
-  appId: "1:990437928831:web:8cbabd8430484b776ff44a"
-};
-
-try{
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  window.WDB = {
-    ready: true,
-    async addGuestbook(entry){
-      await addDoc(collection(db,'guestbook'), {
-        name: entry.name, msg: entry.msg, when: entry.when, createdAt: serverTimestamp()
-      });
-    },
-    async listGuestbook(){
-      const q = query(collection(db,'guestbook'), orderBy('createdAt','desc'), limit(100));
-      const snap = await getDocs(q);
-      return snap.docs.map(d=>d.data());
-    },
-    async addRsvp(data){
-      await addDoc(collection(db,'rsvp'), {
-        side: data.side, attend: data.attend, name: data.name, count: data.count,
-        createdAt: serverTimestamp()
-      });
-    }
-  };
-  // 메인 스크립트에 준비 완료 알림
-  window.dispatchEvent(new Event('wdb-ready'));
-}catch(e){
-  console.error('Firebase 초기화 실패:', e);
-  // 실패 시 window.WDB.ready 가 없으므로 자동으로 localStorage 폴백
-}
 </script>
 
 </body>

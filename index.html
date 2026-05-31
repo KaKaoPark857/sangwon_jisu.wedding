@@ -194,8 +194,8 @@ section{padding:60px 30px;position:relative}
 .place .name{font-size:19px;font-weight:700;text-align:center;font-family:'Jua',sans-serif}
 .place .addr{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:4px}
 .transport{margin-top:18px;background:var(--green-bg);border-radius:10px;padding:16px 18px;
-  font-size:14px;color:var(--ink);line-height:2}
-.transport b{color:var(--coral);font-family:'Jua',sans-serif;font-size:15px}
+  font-size:13.5px;color:var(--ink);line-height:1.7;text-align:left}
+.transport b{color:var(--coral);font-family:'Jua',sans-serif;font-size:14.5px}
 #map{width:100%;height:230px;margin-top:16px;border-radius:10px;border:1px solid var(--line);
   background:#eef4ec;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:13px}
 .map-btns{display:flex;gap:8px;margin-top:12px}
@@ -350,7 +350,7 @@ const CONFIG = {
               { rel: "신부 아버지", bank: "농협은행", number: "81551-52-397109", holder: "이창환" },
               { rel: "신부 어머니", bank: "농협은행", number: "815041-52-130884", holder: "김정화" }
             ] },
-
+            
   // ── 예식 일시/장소 ─────────────────────────
   wedding: {
     dateText: "2026년 08월 23일 일요일 낮 12시 10분",
@@ -363,10 +363,10 @@ const CONFIG = {
     lat: 37.27761182159211, lng: 127.03625107602785,
     naverPlaceUrl: "https://naver.me/xExWTS9N",
     kakaoPlaceUrl: "https://place.map.kakao.com/1298739354",
-    transport: "대중교통  1호선 수원역 4번출구\n         신분당선 광교중앙역 3번출구\n자가용    더아리엘 주차장 이용가능",
+    transport: "[수원역] 1호선 4번출구 앞\n10, 10-2, 10-5, 11-1, 15-1, 37, 83-1, 13-4, 720-2 탑승\n→ 수원고용복지플러스센터·동수원병원·라마다호텔 하차\n\n[수원시청역] 1번출구 82-1 탑승\n→ 우만신성아파트 하차\n\n[광교중앙역] 3번출구 13-4 탑승\n→ 우만신성아파트 하차\n\n더아리엘 수원 / 경기 수원시 팔달구 중부대로 181",
     // ── 예식 안내(식순·주차·식사·셔틀 등). 항목명/내용 자유롭게 수정·추가 ──
     notices: [
-      { icon: "🅿️", title: "주차 안내", body: "더아리엘 수원 건물 내 주차장 이용 가능\n예식 시간 2시간 무료" },
+      { icon: "🅿️", title: "주차 안내", body: "건물 내 1층·지하1층·제2주차장 주차 가능\n*만차 시, 직원 안내에 따라 외부 주차장 이용 가능 (2시간 무료)\n  송림빌딩, 세운주차장, 동수원병원" },
       { icon: "🍽️", title: "식사 안내", body: "예식 후 6층 연회장에서 뷔페로 제공됩니다." },
       { icon: "🚌", title: "셔틀버스", body: "수원역 4번 출구에서 셔틀버스 운행\n예식 1시간 전부터 20분 간격" },
       { icon: "💐", title: "화환 안내", body: "축하 화환은 정중히 사양합니다.\n마음만 감사히 받겠습니다." }
@@ -683,7 +683,7 @@ $("#parents").innerHTML =
 $("#placeName").textContent = `${C.wedding.placeName} ${C.wedding.hall}`;
 $("#placeAddr").textContent = C.wedding.address;
 $("#transport").innerHTML = C.wedding.transport.replace(/\n/g,"<br>")
-  .replace(/(대중교통|자가용)/g,'<b>$1</b>');
+  .replace(/\[([^\]]+)\]/g,'<b>$1</b>');
 $("#footerNames").textContent = `${C.groom.name} · ${C.bride.name}`;
 $("#naverBtn").href = C.wedding.naverPlaceUrl;
 $("#kakaoBtn").href = C.wedding.kakaoPlaceUrl;

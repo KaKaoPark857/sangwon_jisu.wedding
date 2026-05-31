@@ -105,7 +105,7 @@ section{padding:60px 30px;position:relative}
 .hero .hb-b{bottom:-11px;left:50%;transform:translateX(-50%)}
 /* 손그림 느낌 모서리 리본 */
 .hero .ribbon{font-size:32px;color:var(--coral);margin-bottom:4px;line-height:1}
-.hero .bigdate{font-family:'Jua',sans-serif;font-weight:700;font-size:clamp(34px,11vw,44px);letter-spacing:.02em;
+.hero .bigdate{font-family:'Gowun Batang',serif;font-weight:400;font-size:clamp(32px,10vw,42px);letter-spacing:.03em;
   color:var(--ink);margin:2px 0 20px}
 .hero .main-photo{width:78%;max-width:280px;aspect-ratio:27/35;margin:0 auto 18px;
   border-radius:50% 50% 10px 10px / 40% 40% 4% 4%;   /* 비율 기반 아치형(기기 무관) */
@@ -117,7 +117,7 @@ section{padding:60px 30px;position:relative}
 .hero .main-photo .ph-text{font-family:'Jua',sans-serif;color:var(--ink-soft);font-size:14px}
 .hero .names{font-family:'Gowun Batang',serif;font-weight:700;font-size:clamp(32px,10vw,42px);color:#1a1a1a;margin:10px 0;letter-spacing:.02em}
 .hero .names .heart{color:var(--coral);margin:0 8px}
-.hero .invite{font-family:'Hi Melody',cursive;font-size:19px;color:var(--ink-soft);margin-top:10px}
+.hero .invite{font-family:'Gowun Dodum',sans-serif;font-size:15.5px;color:var(--ink-soft);margin-top:14px;letter-spacing:-.01em}
 .hero .time{font-family:'Jua',sans-serif;font-size:18px;color:var(--coral);margin-top:6px;font-weight:700}
 /* 코너 하트 (종이청첩장) */
 .hero .corner{position:absolute;color:var(--coral);font-size:15px}
@@ -302,7 +302,7 @@ section{padding:60px 30px;position:relative}
 .intro-content{position:relative;z-index:2;text-align:center;padding:30px;
   animation:introFade 1.2s ease both;transition:opacity .35s ease,transform .35s ease}
 @keyframes introFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.intro.open .intro-content{opacity:0;transform:translateY(-12px);transition:opacity .3s ease,transform .3s ease}
+.intro.open .intro-content{opacity:0;transform:translateY(-12px);transition:opacity .2s ease,transform .2s ease}
 .intro-eng{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;
   color:var(--coral);text-transform:uppercase;padding-left:.2em;font-weight:600}
 .intro-line{width:1px;height:34px;background:var(--coral-soft);margin:20px auto}
@@ -393,9 +393,9 @@ const CONFIG = {
     // ── 예식 안내(식순·주차·식사·셔틀 등). 항목명/내용 자유롭게 수정·추가 ──
     notices: [
       { icon: "🅿️", title: "주차 안내", body: "건물 내 1층·지하1층·제2주차장 주차 가능\n*만차 시, 직원 안내에 따라 외부 주차장 이용 가능 (2시간 무료)\n  송림빌딩, 세운주차장, 동수원병원" },
-      { icon: "🍽️", title: "식사 안내", body: "예식 후 6층 연회장에서 뷔페로 제공됩니다." },
-      { icon: "🚌", title: "셔틀버스", body: "수원역 4번 출구에서 셔틀버스 운행\n예식 1시간 전부터 20분 간격" },
-      { icon: "💐", title: "화환 안내", body: "축하 화환은 정중히 사양합니다.\n마음만 감사히 받겠습니다." }
+      { icon: "🍽️", title: "식사 안내", body: "예식 후 4층 or 5층 연회장에서 뷔페로 제공됩니다." },
+      { icon: "🚌", title: "셔틀버스", body: "아직 미정\n아직 미정" },
+      { icon: "💐", title: "화환 안내", body: "아직 미정\n아직 미정" }
     ]
   },
 
@@ -711,8 +711,8 @@ $("#logoB").textContent = C.bride.name.slice(-2);
 $("#verse").innerHTML = C.greeting.verse.replace(/\n/g,"<br>");
 $("#greetBody").innerHTML = C.greeting.body.replace(/\n/g,"<br>");
 $("#parents").innerHTML =
-  `<div><b>${C.groom.father} · ${C.groom.mother}</b>의 ${C.groom.order} <span class="nm">${C.groom.name}</span></div>` +
-  `<div><b>${C.bride.father} · ${C.bride.mother}</b>의 ${C.bride.order} <span class="nm">${C.bride.name}</span></div>`;
+  `<div><b>${C.groom.father} · ${C.groom.mother}</b>의 ${C.groom.order} <span class="nm">${C.groom.displayName||C.groom.name}</span></div>` +
+  `<div><b>${C.bride.father} · ${C.bride.mother}</b>의 ${C.bride.order} <span class="nm">${C.bride.displayName||C.bride.name}</span></div>`;
 $("#placeName").textContent = `${C.wedding.placeName} ${C.wedding.hall}`;
 $("#placeAddr").textContent = C.wedding.address;
 $("#transport").innerHTML = C.wedding.transport.replace(/\n/g,"<br>")

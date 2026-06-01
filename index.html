@@ -179,10 +179,11 @@ section{padding:60px 30px;position:relative}
   padding:8px 0;letter-spacing:.05em}
 .cal td{padding:9px 0;font-size:14px;color:var(--ink)}
 .cal td.sun{color:var(--coral)}
-.cal td.mark{position:relative;color:var(--coral);font-weight:700}
+.cal td.mark{position:relative;color:#fff;font-weight:700}
 .cal td.mark span{position:relative;z-index:2}
-.cal td.mark::before{content:"";position:absolute;inset:2px;margin:auto;width:32px;height:32px;
-  border:2px solid var(--coral);border-radius:50%;z-index:1;left:0;right:0}
+.cal td.mark::before{content:"♥";position:absolute;inset:0;margin:auto;
+  font-size:34px;color:var(--coral);z-index:1;line-height:34px;
+  display:flex;align-items:center;justify-content:center}
 .dday{margin-top:24px;text-align:center;font-size:16px;font-family:'Hi Melody',cursive}
 .dday .num{font-family:'Jua',sans-serif;font-size:28px;color:var(--coral);font-weight:700}
 .countdown{display:flex;justify-content:center;gap:8px;margin-top:16px}
@@ -196,6 +197,10 @@ section{padding:60px 30px;position:relative}
 .transport{margin-top:18px;background:var(--green-bg);border-radius:10px;padding:16px 18px;
   font-size:13.5px;color:var(--ink);line-height:1.7;text-align:left}
 .transport b{color:var(--coral);font-family:'Jua',sans-serif;font-size:14.5px}
+.transport .t-station{color:var(--ink);font-family:'Jua',sans-serif;font-size:15px}
+.transport .t-line{display:inline-block;margin-left:6px;padding:1px 9px;border-radius:11px;
+  color:#fff;font-family:'Gowun Dodum',sans-serif;font-size:11.5px;font-weight:700;
+  vertical-align:middle;letter-spacing:-.02em}
 #map{width:100%;height:230px;margin-top:16px;border-radius:10px;border:1px solid var(--line);
   background:#eef4ec;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:13px}
 .map-btns{display:flex;gap:8px;margin-top:12px}
@@ -212,11 +217,11 @@ section{padding:60px 30px;position:relative}
 .acc-side{font-size:13px;color:var(--ink);margin:16px 0 6px;font-weight:700;font-family:'Jua',sans-serif}
 .acc-item{display:flex;justify-content:space-between;align-items:center;
   background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}
-.acc-item .info{font-size:13.5px}
-.acc-item .info b{display:block;font-weight:700;margin-bottom:2px;color:#000}
-.acc-item .info b .acc-rel{font-weight:400;font-size:12px;color:var(--coral);margin-left:5px}
+.acc-item .info{font-size:13.5px;text-align:left}
+.acc-item .info .acc-rel{display:block;font-size:11.5px;color:var(--coral);margin-bottom:1px}
+.acc-item .info b{display:block;font-weight:700;margin-bottom:3px;color:#000;font-size:15px}
+.acc-item .info .acc-bank{display:block;color:var(--ink-soft);font-size:13px}
 .acc-empty{text-align:center;color:var(--ink-soft);font-size:13px;padding:12px 0}
-.acc-item .info span{color:var(--ink-soft)}
 .acc-item button{font-family:'Jua',sans-serif;font-weight:700;font-size:13px;padding:7px 13px;
   border:1.5px solid var(--coral-soft);background:#fff;color:var(--coral);border-radius:8px;cursor:pointer}
 .acc-item button:active{background:var(--coral);color:#fff}
@@ -347,7 +352,8 @@ section{padding:60px 30px;position:relative}
 .footer{text-align:center;padding:46px 30px 60px;color:var(--ink-soft);font-size:13px;
   background:linear-gradient(180deg,#fffdfb,#fdeee8)}
 .footer .heart-line{margin-bottom:12px}
-.footer .fnames{font-family:'Jua',sans-serif;font-weight:700;font-size:20px;color:var(--coral-deep)}
+.footer .fnames{font-family:'Gowun Batang',serif;font-weight:700;font-size:21px;color:var(--ink)}
+.footer .fnames .fheart{color:var(--coral);margin:0 8px;font-size:18px}
 .footer .msg{font-family:'Hi Melody',cursive;font-size:16px;margin-top:8px;color:var(--coral)}
 
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
@@ -390,13 +396,13 @@ const CONFIG = {
     lat: 37.27761182159211, lng: 127.03625107602785,
     naverPlaceUrl: "https://naver.me/xExWTS9N",
     kakaoPlaceUrl: "https://place.map.kakao.com/1298739354",
-    transport: "[수원역] 1호선 4번출구 앞\n10, 10-2, 10-5, 11-1, 15-1, 37, 83-1, 13-4, 720-2 탑승\n→ 수원고용복지플러스센터·동수원병원·라마다호텔 하차\n\n[수원시청역] 1번출구 82-1 탑승\n→ 우만신성아파트 하차\n\n[광교중앙역] 3번출구 13-4 탑승\n→ 우만신성아파트 하차\n\n더아리엘 수원 / 경기 수원시 팔달구 중부대로 181",
+    transport: "[수원역::1호선::#0052A4] 4번출구 앞\n10, 10-2, 10-5, 11-1, 15-1, 37, 83-1, 13-4, 720-2 탑승\n→ 수원고용복지플러스센터·동수원병원·라마다호텔 하차\n\n[수원시청역::수인분당선::#FABE00] 1번출구 82-1 탑승\n→ 우만신성아파트 하차\n\n[광교중앙역::신분당선::#D4003B] 3번출구 13-4 탑승\n→ 우만신성아파트 하차\n\n더아리엘 수원 / 경기 수원시 팔달구 중부대로 181",
     // ── 예식 안내(식순·주차·식사·셔틀 등). 항목명/내용 자유롭게 수정·추가 ──
     notices: [
       { icon: "🅿️", title: "주차 안내", body: "건물 내 1층·지하1층·제2주차장 주차 가능\n*만차 시, 직원 안내에 따라 외부 주차장 이용 가능 (2시간 무료)\n  송림빌딩, 세운주차장, 동수원병원" },
-      { icon: "🍽️", title: "식사 안내", body: "예식 후 4층 or 5층 연회장에서 뷔페로 제공됩니다." },
-      { icon: "🚌", title: "셔틀버스", body: "아직 미정\n아직 미정" },
-      { icon: "💐", title: "화환 안내", body: "아직 미정\n아직 미정" }
+      { icon: "🍽️", title: "식사 안내", body: "예식 후 4층 or 5층 연회장에서 뷔페로 제공됩니다." } //,
+      // { icon: "🚌", title: "셔틀버스", body: "아직 미정\n아직 미정" },
+      // { icon: "💐", title: "화환 안내", body: "아직 미정\n아직 미정" }
     ]
   },
 
@@ -717,8 +723,15 @@ $("#parents").innerHTML =
 $("#placeName").textContent = `${C.wedding.placeName} ${C.wedding.hall}`;
 $("#placeAddr").textContent = C.wedding.address;
 $("#transport").innerHTML = C.wedding.transport.replace(/\n/g,"<br>")
-  .replace(/\[([^\]]+)\]/g,'<b>$1</b>');
-$("#footerNames").textContent = `${C.groom.name} · ${C.bride.name}`;
+  .replace(/\[([^\]]+)\]/g,(m,inner)=>{
+    const [station,line,color]=inner.split('::');
+    if(line&&color){
+      return `<b class="t-station">${station}</b>`+
+             `<span class="t-line" style="background:${color}">${line}</span>`;
+    }
+    return `<b class="t-station">${station}</b>`;
+  });
+$("#footerNames").innerHTML = `${C.groom.name}<span class="fheart">♥</span>${C.bride.name}`;
 $("#naverBtn").href = C.wedding.naverPlaceUrl;
 $("#kakaoBtn").href = C.wedding.kakaoPlaceUrl;
 $("#calMon").textContent = `${C.wedding.month}월`;
@@ -842,8 +855,9 @@ function accHtml(p){
   if(!list.length) return '<div class="acc-empty">등록된 계좌가 없습니다</div>';
   return list.map(a=>`
     <div class="acc-item"><div class="info">
-      <b>${a.holder} <span class="acc-rel">${a.rel}</span></b>
-      <span>${a.bank} ${a.number}</span></div>
+      <span class="acc-rel">${a.rel}</span>
+      <b>${a.holder}</b>
+      <span class="acc-bank">${a.bank} ${a.number}</span></div>
     <button data-copy="${a.bank} ${a.number}">복사</button></div>`).join('');
 }
 $("#accGroom").innerHTML = accHtml(C.groom);

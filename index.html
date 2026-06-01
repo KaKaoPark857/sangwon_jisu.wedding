@@ -300,9 +300,10 @@ section{padding:60px 30px;position:relative}
 
 /* 중앙 내용 */
 .intro-content{position:relative;z-index:2;text-align:center;padding:30px;
-  animation:introFade 1.2s ease both;transition:opacity .35s ease,transform .35s ease}
+  animation:introFade 1.2s ease both;transition:opacity .25s ease,transform .25s ease}
 @keyframes introFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.intro.open .intro-content{opacity:0;transform:translateY(-12px);transition:opacity .2s ease,transform .2s ease}
+.intro.open .intro-content{opacity:0;transform:translateY(-12px);animation:none;
+  transition:opacity .25s ease,transform .25s ease;pointer-events:none}
 .intro-eng{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;
   color:var(--coral);text-transform:uppercase;padding-left:.2em;font-weight:600}
 .intro-line{width:1px;height:34px;background:var(--coral-soft);margin:20px auto}
@@ -1057,6 +1058,8 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     if(opened) return; opened=true;
     el.classList.add('open');          // 좌우 문 열림 + 중앙 내용 페이드
     document.body.style.overflow='hidden';
+    const content=$("#introContent");  // 글자 묶음
+    setTimeout(()=>{ if(content) content.style.visibility='hidden'; },250);  // 페이드 직후 완전 숨김
     setTimeout(()=>{                   // 선 그음(.55s)+지연(.5s)+문 열림(1.15s) 후 제거
       el.classList.add('gone');
       document.body.style.overflow='';

@@ -17,10 +17,8 @@
 <title>박상원 ♥ 이지수 결혼합니다</title>
 <meta property="og:title" content="박상원 ♥ 이지수 결혼합니다" />
 <meta property="og:description" content="2026년 08월 23일 일요일, 저희 두 사람의 새로운 시작에 함께해 주세요." />
-<meta property="og:type" content="https://kakaopark857.github.io/sangwon_jisu.wedding/images/main.png" />
-<!-- 공유 미리보기 이미지: 메인 사진 준비되면 아래 절대 URL을 채우세요.
-     예) https://kakaopark857.github.io/sangwon_jisu.wedding/images/main.png -->
-<meta property="og:image" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://kakaopark857.github.io/sangwon_jisu.wedding/images/main.png" />
 <meta property="og:image:width" content="800" />
 <meta property="og:image:height" content="800" />
 
@@ -92,17 +90,19 @@ section{padding:60px 30px;position:relative}
 .hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
   align-items:center;text-align:center;padding:40px 26px;
   background:linear-gradient(180deg,#fffdfb 0%,#fdf3ef 100%)}
-.hero .card{width:100%;max-width:340px;position:relative;padding:46px 30px 42px;background:#fff;
-  border-radius:18px;border:2.5px solid var(--coral);
-  box-shadow:inset 0 0 0 6px #fff, inset 0 0 0 7.5px var(--coral-soft)}
-/* 상단 중앙 리본 */
-.hero .ribbon-svg{position:absolute;top:-20px;left:50%;transform:translateX(-50%);
-  width:78px;height:40px;background:#fff;padding:0 8px;z-index:2}
-/* 측면·하단 하트 (테두리 위 고정, 왜곡 없음) */
-.hero .hb{position:absolute;color:var(--coral);font-size:16px;line-height:1;z-index:2;background:#fff;padding:0 2px}
-.hero .hb-l{left:-9px;top:46%}
-.hero .hb-r{right:-9px;top:54%}
-.hero .hb-b{bottom:-11px;left:50%;transform:translateX(-50%)}
+.hero .card{width:100%;max-width:340px;position:relative;padding:54px 34px 48px;background:#fff;
+  border-radius:18px}
+/* 손그림풍 곡선 테두리 */
+.hero .card-frame{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hero .card>*:not(.card-frame){position:relative;z-index:2}
+/* 상단 중앙 리본 (확대) */
+.hero .ribbon-svg{position:absolute;top:-30px;left:50%;transform:translateX(-50%);
+  width:118px;height:60px;background:#fff;padding:0 10px;z-index:3}
+/* 측면·하단 하트 (확대) */
+.hero .hb{position:absolute;color:var(--coral);font-size:26px;line-height:1;z-index:3;background:#fff;padding:0 3px}
+.hero .hb-l{left:-13px;top:46%}
+.hero .hb-r{right:-13px;top:54%}
+.hero .hb-b{bottom:-17px;left:50%;transform:translateX(-50%)}
 /* 손그림 느낌 모서리 리본 */
 .hero .ribbon{font-size:32px;color:var(--coral);margin-bottom:4px;line-height:1}
 .hero .bigdate{font-family:'Gowun Batang',serif;font-weight:400;font-size:clamp(32px,10vw,42px);letter-spacing:.03em;
@@ -247,6 +247,11 @@ section{padding:60px 30px;position:relative}
 .contact-toggle.open .ct-arrow{transform:rotate(180deg)}
 .contact-parents{display:none;margin-top:8px;flex-direction:column;gap:8px}
 .contact-parents.open{display:flex;animation:fade .4s ease}
+.cp-row{display:flex;gap:8px}
+.cp-cell{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:var(--green-bg);border-radius:10px;padding:10px 8px}
+.cp-who{font-family:'Jua',sans-serif;font-size:13.5px;color:var(--ink);text-align:center;line-height:1.4}
+.cp-role{display:block;font-size:11px;color:var(--coral)}
 
 /* ===== BGM 버튼 (우상단 고정) ===== */
 .bgm-btn{position:fixed;top:14px;right:calc(50% - 230px + 14px);z-index:60;width:42px;height:42px;
@@ -375,9 +380,13 @@ section{padding:60px 30px;position:relative}
   margin-bottom:8px;padding-left:2px}
 
 /* ===== 주차 안내 박스 ===== */
-.parking-box{margin-top:10px;background:#fff;border:1px solid var(--coral-soft);border-radius:10px;
-  padding:14px 16px;font-size:13px;color:var(--ink-soft);line-height:1.7;text-align:left;white-space:pre-line}
+.parking-box{margin-top:10px;background:var(--green-bg);border-radius:10px;
+  padding:16px 18px;font-size:13.5px;color:var(--ink);line-height:1.7;text-align:left;white-space:pre-line}
 .parking-box .pk-title{font-family:'Jua',sans-serif;color:var(--coral);font-size:14.5px}
+.addr-copy{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:7px 14px;
+  background:#fff;border:1.5px solid var(--coral-soft);border-radius:8px;color:var(--coral);
+  font-family:'Jua',sans-serif;font-size:13px;cursor:pointer;white-space:nowrap}
+.addr-copy:active{background:var(--coral);color:#fff}
 
 /* ===== 예식 순서 아코디언 ===== */
 .order-toggle{width:100%;margin-top:12px;padding:13px;background:var(--green-bg);border:none;border-radius:10px;
@@ -412,6 +421,9 @@ section{padding:60px 30px;position:relative}
 .gs-heart{font-size:46px}
 .gs-lead{font-family:'Gowun Dodum',sans-serif;font-size:15px;color:var(--ink);margin-bottom:14px}
 .gs-sub{font-family:'Gowun Dodum',sans-serif;font-size:14px;color:var(--ink);margin:12px 0;line-height:1.7}
+.gs-best{font-family:'Gowun Dodum',sans-serif;font-size:13px;color:var(--coral-deep);
+  background:var(--green-bg);border-radius:10px;padding:12px;margin:14px 0;line-height:1.6}
+.gs-best .gs-best-sub{display:inline-block;margin-top:6px;font-size:11.5px;color:var(--ink-soft)}
 .gs-list{list-style:none;text-align:left;display:inline-block;margin:6px auto 4px;
   font-family:'Gowun Dodum',sans-serif;font-size:13.5px;color:var(--ink-soft);line-height:2}
 .gs-list .gs-dim{font-size:12px;color:var(--ink-soft)}
@@ -424,6 +436,7 @@ section{padding:60px 30px;position:relative}
 .gsnap-notice-t{font-family:'Jua',sans-serif;font-size:14px;color:var(--ink);margin-bottom:6px}
 .gsnap-notice p{font-size:12.5px;color:var(--ink-soft);line-height:1.7;margin:2px 0}
 .gsnap-deadline{font-family:'Jua',sans-serif;font-size:13.5px;color:var(--coral);margin:14px 0}
+.gsnap-announce{font-family:'Gowun Dodum',sans-serif;font-size:13px;color:var(--ink-soft);margin:-6px 0 14px}
 .gsnap-btn{width:100%;font-family:'Jua',sans-serif;font-size:16px;padding:14px;background:var(--coral);
   color:#fff;border:none;border-radius:10px;cursor:pointer}
 .gsnap-btn:active{background:var(--coral-deep)}
@@ -518,7 +531,7 @@ const CONFIG = {
     notices: [
       { icon: "🍽️", title: "식사 안내", body: "예식 후 4층 or 5층 연회장에서 뷔페로 제공됩니다." },
       { icon: "🚌", title: "셔틀버스", body: "아직 미정\n아직 미정" },
-      { icon: "💐", title: "화환 안내", body: "아직 미정\n아직 미정" }
+      { icon: "💐", title: "화환 안내", body: "축하 화환은 정중히 사양합니다.\n축하해 주시는 마음만 감사히 받겠습니다." }
     ],
     // ── 예식 순서 (나중에 작성). 비우면 "준비 중" 안내 표시 ──
     //   예: { time: "12:10", item: "개식 및 신랑신부 입장" }
@@ -565,11 +578,12 @@ const CONFIG = {
   siteUrl: "https://kakaopark857.github.io/sangwon_jisu.wedding/",
 
   // ── 게스트 스냅샷 (하객 사진 수집) ──
-  //   uploadUrl: 사진을 받을 외부 링크(구글 드라이브 파일요청/카카오 오픈채팅 등). 비우면 안내 토스트만 표시.
-  //   deadline: 업로드 마감 안내 문구 (예식 약 3개월 후)
+  //   uploadUrl: 오픈 카카오톡 단체방 링크. 비우면 안내 토스트만 표시.
+  //   deadline: 업로드 마감 안내 / announce: 당첨 발표 안내
   guestSnap: {
-    uploadUrl: "",
-    deadline: "2026년 11월 23일까지 업로드 가능합니다."
+    uploadUrl: "https://open.kakao.com/o/gdZDc3yi",
+    deadline: "2026년 9월 4일까지 업로드 가능합니다.",
+    announce: "당첨자는 10월 중 선정하여 개별 안내드립니다."
   },
 
   // ── 함께한 시간 카운터 기준일 (푸터에 실시간 표시) ──
@@ -623,20 +637,31 @@ const CONFIG = {
   <!-- HERO -->
   <section class="hero" id="sec-hero">
     <div class="card reveal">
-      <!-- 상단 중앙 리본 -->
+      <!-- 손그림풍 곡선 테두리 (배경) -->
+      <svg class="card-frame" viewBox="0 0 340 460" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
+           fill="none" stroke="#f2603a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 14
+          Q14 14 14 22
+          Q8 40 16 58 Q8 76 16 94 Q8 112 16 130 Q8 148 16 166
+          Q8 200 16 240 Q8 300 16 360 Q8 410 16 440
+          Q14 448 24 446
+          Q60 452 100 446 Q160 452 240 446 Q300 452 318 446
+          Q326 446 326 438
+          Q332 410 324 380 Q332 320 324 260 Q332 200 324 140
+          Q332 100 324 60 Q330 30 322 20
+          Q322 14 312 16
+          Q260 8 200 16 Q140 8 80 16 Q40 10 20 14 Z"/>
+      </svg>
+      <!-- 상단 중앙 리본 (확대) -->
       <svg class="ribbon-svg" viewBox="0 0 90 46" xmlns="http://www.w3.org/2000/svg"
            fill="none" stroke="#f2603a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <!-- 왼쪽 고리 -->
         <path d="M45 17 C32 6 14 6 12 16 C10 26 30 27 45 20 Z" fill="#fff"/>
-        <!-- 오른쪽 고리 -->
         <path d="M45 17 C58 6 76 6 78 16 C80 26 60 27 45 20 Z" fill="#fff"/>
-        <!-- 매듭 -->
         <path d="M41 15 C39 18 39 22 41 25 L49 25 C51 22 51 18 49 15 Z" fill="#f2603a" stroke="none"/>
-        <!-- 양쪽 꼬리 -->
         <path d="M43 25 C40 33 35 38 30 42"/>
         <path d="M47 25 C50 33 55 38 60 42"/>
       </svg>
-      <!-- 측면·하단 하트 (테두리 위 고정) -->
+      <!-- 측면·하단 하트 (확대) -->
       <span class="hb hb-l">♥</span>
       <span class="hb hb-r">♥</span>
       <span class="hb hb-b">♥</span>
@@ -840,16 +865,16 @@ const CONFIG = {
       <div class="divider"></div>
       <div class="title">게스트스냅</div>
       <p style="color:var(--ink-soft);font-size:14px;margin-top:6px;line-height:1.7" class="melody">
-        결혼식 당일 찍으신 사진·영상이 있다면<br>아래 버튼으로 전달해 주세요.</p>
+        결혼식 당일 찍으신 사진·영상이 있다면<br>아래 버튼으로 함께 나눠주세요.</p>
       <div class="gsnap-notice">
-        <div class="gsnap-notice-t">업로드 주의사항</div>
-        <p>· 한 번에 최대 100개까지 업로드하실 수 있어요.</p>
-        <p>· 여러 번 나누어 업로드하실 수 있어요.</p>
-        <p>· 영상은 파일당 200MB 이하만 첨부하실 수 있어요.</p>
-        <p>· 업로드 중 화면이 꺼지면 중단될 수 있으니, 화면이 켜진 상태로 진행해주세요.</p>
+        <div class="gsnap-notice-t">📷 사진·영상 올리는 방법</div>
+        <p>· 아래 버튼을 누르면 <b>오픈 카카오톡 단체방</b>으로 연결됩니다.</p>
+        <p>· 채팅방에 사진·영상을 올려주세요.</p>
+        <p>· <b>실명으로 올려주셔야 이벤트 참여가 가능합니다.</b><br>&nbsp;&nbsp;(사진과 함께 성함을 남겨주세요!)</p>
       </div>
       <p class="gsnap-deadline" id="gsnapDeadline"></p>
-      <button class="gsnap-btn" id="gsnapUpload">📸 사진 업로드하기</button>
+      <p class="gsnap-announce" id="gsnapAnnounce"></p>
+      <button class="gsnap-btn" id="gsnapUpload">💬 오픈채팅으로 사진 올리기</button>
     </div>
   </section>
 
@@ -907,7 +932,8 @@ const CONFIG = {
       <li>3. 여러분의 미소 😆<br><span class="gs-dim">(오늘 주인공은 저희뿐만이 아니에요!)</span></li>
       <li>4. 가족 &amp; 친구들과 함께한 순간 💕</li>
     </ul>
-    <p class="gs-sub">당일날, 아래 ‘게스트스냅’ 메뉴에서<br>사진·영상을 올려주세요!<br>많은 참여 부탁드려요! 💖</p>
+    <p class="gs-sub">당일날, 아래 ‘게스트스냅’ 메뉴에서<br>오픈채팅방에 사진·영상을 올려주세요!<br>많은 참여 부탁드려요! 💖</p>
+    <p class="gs-best">🎁 베스트샷으로 선정되신 분께는<br>작은 소정의 상품권을 드립니다!<br><span class="gs-best-sub">실명으로 올려주셔야 참여가 가능해요</span></p>
     <button class="gs-submit" id="gsConfirm">확인</button>
   </div>
 </div>
@@ -965,9 +991,12 @@ $("#tmapBtn").addEventListener('click',e=>{
   const box=$("#parkingBox"); if(!box) return;
   const txt=C.wedding.car||'';
   if(!txt){ box.style.display='none'; return; }
-  // 첫 줄(주소)만 강조
+  // 첫 줄(주소)만 강조 + 주소 복사 버튼
   const lines=txt.split('\n');
-  box.innerHTML=`<span class="pk-title">${esc(lines[0])}</span>\n`+esc(lines.slice(1).join('\n'));
+  box.innerHTML=`<span class="pk-title">${esc(lines[0])}</span>\n`+esc(lines.slice(1).join('\n'))+
+    `\n<button class="addr-copy" id="addrCopy">📋 주소 복사하기</button>`;
+  const btn=document.getElementById('addrCopy');
+  if(btn) btn.addEventListener('click',()=>copy(C.wedding.address,'주소가 복사되었습니다'));
 })();
 $("#calMon").textContent = `${C.wedding.month}월`;
 
@@ -1285,16 +1314,27 @@ $("#shareLink").addEventListener('click',()=>copy(location.href,'링크가 복�
   }
   // 신랑·신부 (항상 표시)
   let html = row('신랑', C.groom.name, C.groom.tel) + row('신부', C.bride.name, C.bride.tel);
-  // 혼주(부모님) — 펼쳐보기
-  const parents=[
-    ['신랑 아버지', C.groom.father, C.groom.fatherTel],
-    ['신랑 어머니', C.groom.mother, C.groom.motherTel],
-    ['신부 아버지', C.bride.father, C.bride.fatherTel],
-    ['신부 어머니', C.bride.mother, C.bride.motherTel]
-  ];
+  // 혼주(부모님) — 펼쳐보기, 좌우 2열(아버지 행 / 어머니 행)
+  function cell(role,name,telRaw){
+    const tel=(telRaw||'').replace(/[^0-9]/g,'');
+    const btns = tel
+      ? `<a class="call" href="tel:${tel}" aria-label="전화">📞</a><a class="sms" href="sms:${tel}" aria-label="문자">✉️</a>`
+      : `<span class="contact-none">준비 중</span>`;
+    return `<div class="cp-cell">
+      <div class="cp-who"><span class="cp-role">${role}</span>${name}</div>
+      <div class="contact-btns">${btns}</div></div>`;
+  }
   html += `<button class="contact-toggle" id="contactToggle">혼주에게 연락하기 <span class="ct-arrow">▾</span></button>`;
   html += `<div class="contact-parents" id="contactParents">`+
-          parents.map(([role,name,tel])=>row(role,name,tel)).join('')+`</div>`;
+    `<div class="cp-row">`+
+      cell('신랑 아버지', C.groom.father, C.groom.fatherTel)+
+      cell('신부 아버지', C.bride.father, C.bride.fatherTel)+
+    `</div>`+
+    `<div class="cp-row">`+
+      cell('신랑 어머니', C.groom.mother, C.groom.motherTel)+
+      cell('신부 어머니', C.bride.mother, C.bride.motherTel)+
+    `</div>`+
+  `</div>`;
   wrap.innerHTML = html;
   // 펼쳐보기 토글
   const toggle=$("#contactToggle"), panel=$("#contactParents");
@@ -1380,9 +1420,10 @@ function openGuestSnap(){
 
   // 하단 업로드 섹션
   $("#gsnapDeadline").textContent = gs.deadline || '';
+  $("#gsnapAnnounce").textContent = gs.announce || '';
   $("#gsnapUpload").addEventListener('click',()=>{
     if(gs.uploadUrl){ window.open(gs.uploadUrl,'_blank','noopener'); }
-    else{ toast('사진 전달 링크가 곧 준비됩니다'); }
+    else{ toast('오픈채팅 링크가 곧 준비됩니다'); }
   });
 })();
 

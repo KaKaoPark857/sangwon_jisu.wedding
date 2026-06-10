@@ -227,20 +227,26 @@ section{padding:60px 30px;position:relative}
 .acc-item button:active{background:var(--coral);color:#fff}
 
 /* ===== CONTACT (전화/문자) ===== */
-.contact-wrap{display:flex;flex-direction:column;gap:14px;margin-top:8px}
-.contact-row{background:var(--green-bg);border-radius:12px;padding:14px 16px}
-.contact-row .who{font-family:'Jua',sans-serif;font-size:16px;color:var(--ink);margin-bottom:10px}
-.contact-row .who .role{font-size:13px;color:var(--coral);margin-right:6px}
+.contact-wrap{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.contact-row{display:flex;align-items:center;justify-content:space-between;
+  background:var(--green-bg);border-radius:10px;padding:10px 14px}
+.contact-row .who{font-family:'Jua',sans-serif;font-size:15px;color:var(--ink);margin:0;
+  display:flex;align-items:center;gap:6px}
+.contact-row .who .role{font-size:12px;color:var(--coral)}
 .contact-btns{display:flex;gap:8px}
-.contact-btns a{flex:1;text-align:center;padding:10px 0;border-radius:8px;text-decoration:none;
-  font-family:'Jua',sans-serif;font-size:14px;border:1.5px solid var(--coral-soft)}
+.contact-btns a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;
+  border-radius:50%;text-decoration:none;font-size:15px;border:1.5px solid var(--coral-soft)}
 .contact-btns .call{background:var(--coral);color:#fff;border-color:var(--coral)}
 .contact-btns .sms{background:#fff;color:var(--coral)}
 .contact-btns a:active{opacity:.8}
-.contact-divider{font-family:'Jua',sans-serif;font-size:14px;color:var(--coral);
-  margin:18px 0 10px;padding-top:14px;border-top:1px dashed var(--coral-soft)}
-.contact-none{flex:1;text-align:center;padding:10px 0;font-family:'Gowun Dodum',sans-serif;
-  font-size:13px;color:var(--ink-soft)}
+.contact-none{font-family:'Gowun Dodum',sans-serif;font-size:12px;color:var(--ink-soft)}
+/* 혼주 펼쳐보기 */
+.contact-toggle{width:100%;margin-top:12px;padding:12px;background:#fff;border:1.5px solid var(--coral-soft);
+  border-radius:10px;font-family:'Jua',sans-serif;font-size:14px;color:var(--coral);cursor:pointer}
+.contact-toggle .ct-arrow{transition:transform .3s;display:inline-block}
+.contact-toggle.open .ct-arrow{transform:rotate(180deg)}
+.contact-parents{display:none;margin-top:8px;flex-direction:column;gap:8px}
+.contact-parents.open{display:flex;animation:fade .4s ease}
 
 /* ===== BGM 버튼 (우상단 고정) ===== */
 .bgm-btn{position:fixed;top:14px;right:calc(50% - 230px + 14px);z-index:60;width:42px;height:42px;
@@ -364,6 +370,9 @@ section{padding:60px 30px;position:relative}
 .map-btns a{display:flex;align-items:center;justify-content:center;gap:6px}
 .mb-ico{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
   border-radius:5px;color:#fff;font-family:'Jua',sans-serif;font-size:12px;font-weight:700;flex-shrink:0}
+.mb-tmap{background:linear-gradient(135deg,#5B6CFF 0%,#9B4DFF 50%,#FF4D7D 100%)}
+.loc-cat{font-family:'Jua',sans-serif;font-size:15px;color:var(--coral);text-align:left;
+  margin-bottom:8px;padding-left:2px}
 
 /* ===== 주차 안내 박스 ===== */
 .parking-box{margin-top:10px;background:#fff;border:1px solid var(--coral-soft);border-radius:10px;
@@ -389,9 +398,11 @@ section{padding:60px 30px;position:relative}
 
 /* ===== 게스트스냅 팝업 ===== */
 .gs-modal{position:fixed;inset:0;z-index:250;background:rgba(40,30,28,.5);
-  display:none;align-items:center;justify-content:center;padding:24px}
+  display:none;align-items:center;justify-content:center;padding:24px;
+  overscroll-behavior:contain;touch-action:none}
 .gs-modal.open{display:flex;animation:lbFade .3s ease}
 .gs-box{background:#fff;border-radius:18px;max-width:340px;width:100%;max-height:86vh;overflow-y:auto;
+  overscroll-behavior:contain;touch-action:pan-y;
   padding:30px 24px 26px;position:relative;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.25)}
 .gs-close{position:absolute;top:14px;right:16px;border:none;background:none;font-size:26px;
   color:var(--ink-soft);cursor:pointer;line-height:1}
@@ -404,16 +415,18 @@ section{padding:60px 30px;position:relative}
 .gs-list{list-style:none;text-align:left;display:inline-block;margin:6px auto 4px;
   font-family:'Gowun Dodum',sans-serif;font-size:13.5px;color:var(--ink-soft);line-height:2}
 .gs-list .gs-dim{font-size:12px;color:var(--ink-soft)}
-.gs-gift{font-family:'Gowun Dodum',sans-serif;font-size:13px;color:var(--coral-deep);
-  background:var(--green-bg);border-radius:10px;padding:12px;margin:14px 0;line-height:1.6}
-.gs-notice{text-align:left;background:#faf8f6;border:1px solid var(--line);border-radius:10px;
-  padding:12px 14px;margin:12px 0}
-.gs-notice-t{font-family:'Jua',sans-serif;font-size:14px;color:var(--ink);margin-bottom:6px}
-.gs-notice p{font-size:12px;color:var(--ink-soft);line-height:1.7;margin:2px 0}
-.gs-deadline{font-family:'Jua',sans-serif;font-size:13.5px;color:var(--coral);margin:14px 0}
 .gs-submit{width:100%;font-family:'Jua',sans-serif;font-size:15px;padding:13px;background:var(--coral);
   color:#fff;border:none;border-radius:10px;cursor:pointer}
 .gs-submit:active{background:var(--coral-deep)}
+
+/* ===== 게스트스냅 업로드 섹션 ===== */
+.gsnap-notice{text-align:left;background:var(--green-bg);border-radius:12px;padding:14px 16px;margin:16px 0 0}
+.gsnap-notice-t{font-family:'Jua',sans-serif;font-size:14px;color:var(--ink);margin-bottom:6px}
+.gsnap-notice p{font-size:12.5px;color:var(--ink-soft);line-height:1.7;margin:2px 0}
+.gsnap-deadline{font-family:'Jua',sans-serif;font-size:13.5px;color:var(--coral);margin:14px 0}
+.gsnap-btn{width:100%;font-family:'Jua',sans-serif;font-size:16px;padding:14px;background:var(--coral);
+  color:#fff;border:none;border-radius:10px;cursor:pointer}
+.gsnap-btn:active{background:var(--coral-deep)}
 
 /* ===== 단체사진 이벤트 예고편 카드 ===== */
 .event-card{background:linear-gradient(160deg,#fff4f0,#fde4dc);border:1.5px solid var(--coral-soft);
@@ -498,9 +511,9 @@ const CONFIG = {
     lat: 37.27761182159211, lng: 127.03625107602785,
     naverPlaceUrl: "https://naver.me/xExWTS9N",
     kakaoPlaceUrl: "https://place.map.kakao.com/1298739354",
-    transport: "[수원역::1호선::#0052A4] 4번출구 앞\n10, 10-2, 10-5, 11-1, 15-1, 37, 83-1, 13-4, 720-2 탑승\n→ 수원고용복지플러스센터·동수원병원·라마다호텔 하차\n\n[수원시청역::수인분당선::#FABE00] 1번출구 82-1 탑승\n→ 우만신성아파트 하차\n\n[광교중앙역::신분당선::#D4003B] 3번출구 13-4 탑승\n→ 우만신성아파트 하차\n\n더아리엘 수원 / 경기 수원시 팔달구 중부대로 181",
-    // ── 주차 안내 (대중교통 정보 바로 아래에 표시) ──
-    parking: "🅿️ 주차 안내\n건물 내 1층·지하1층·제2주차장 주차 가능\n*만차 시, 직원 안내에 따라 외부 주차장 이용 가능 (2시간 무료)\n  송림빌딩, 세운주차장, 동수원병원",
+    transport: "[수원역::1호선::#0052A4] 4번출구 앞\n10, 10-2, 10-5, 11-1, 15-1, 37, 83-1, 13-4, 720-2 탑승\n→ 수원고용복지플러스센터·동수원병원·라마다호텔 하차\n\n[수원시청역::수인분당선::#FABE00] 1번출구 82-1 탑승\n→ 우만신성아파트 하차\n\n[광교중앙역::신분당선::#D4003B] 3번출구 13-4 탑승\n→ 우만신성아파트 하차",
+    // ── 자가용 안내 (주소 + 주차) ──
+    car: "더아리엘 수원 / 경기 수원시 팔달구 중부대로 181\n\n건물 내 1층·지하1층·제2주차장 주차 가능\n*만차 시, 직원 안내에 따라 외부 주차장 이용 가능 (2시간 무료)\n  송림빌딩, 세운주차장, 동수원병원",
     // ── 예식 안내(식사·셔틀·화환 등). 항목명/내용 자유롭게 수정·추가 ──
     notices: [
       { icon: "🍽️", title: "식사 안내", body: "예식 후 4층 or 5층 연회장에서 뷔페로 제공됩니다." },
@@ -705,8 +718,9 @@ const CONFIG = {
       <div class="addr" id="placeAddr"></div>
     </div>
     <div class="reveal">
+      <div class="loc-cat">🚌 대중교통</div>
       <div class="transport" id="transport"></div>
-      <!-- 주차 안내 (대중교통 바로 아래) -->
+      <div class="loc-cat" style="margin-top:18px">🚗 자가용</div>
       <div class="parking-box" id="parkingBox"></div>
       <div id="map">지도 로딩 영역 (카카오 JS 키 입력 시 표시)</div>
       <div class="map-btns">
@@ -715,7 +729,7 @@ const CONFIG = {
         <a id="kakaoBtn" target="_blank" rel="noopener">
           <span class="mb-ico" style="background:#FEE500;color:#3C1E1E">K</span>카카오 지도</a>
         <a id="tmapBtn" target="_blank" rel="noopener">
-          <span class="mb-ico" style="background:#EF3340">T</span>티맵</a>
+          <span class="mb-ico mb-tmap">T</span>티맵</a>
       </div>
     </div>
   </section>
@@ -819,6 +833,26 @@ const CONFIG = {
     </div>
   </section>
 
+  <!-- GUEST SNAP 업로드 -->
+  <section class="center" id="sec-guestsnap">
+    <div class="reveal">
+      <div class="eng">Guest Snap</div>
+      <div class="divider"></div>
+      <div class="title">게스트스냅</div>
+      <p style="color:var(--ink-soft);font-size:14px;margin-top:6px;line-height:1.7" class="melody">
+        결혼식 당일 찍으신 사진·영상이 있다면<br>아래 버튼으로 전달해 주세요.</p>
+      <div class="gsnap-notice">
+        <div class="gsnap-notice-t">업로드 주의사항</div>
+        <p>· 한 번에 최대 100개까지 업로드하실 수 있어요.</p>
+        <p>· 여러 번 나누어 업로드하실 수 있어요.</p>
+        <p>· 영상은 파일당 200MB 이하만 첨부하실 수 있어요.</p>
+        <p>· 업로드 중 화면이 꺼지면 중단될 수 있으니, 화면이 켜진 상태로 진행해주세요.</p>
+      </div>
+      <p class="gsnap-deadline" id="gsnapDeadline"></p>
+      <button class="gsnap-btn" id="gsnapUpload">📸 사진 업로드하기</button>
+    </div>
+  </section>
+
   <!-- QR -->
   <section class="center" id="sec-qr">
     <div class="reveal">
@@ -857,7 +891,7 @@ const CONFIG = {
 
 <div class="toast" id="toast"></div>
 
-<!-- 게스트스냅 팝업 -->
+<!-- 게스트스냅 팝업 (안내만) -->
 <div class="gs-modal" id="gsModal">
   <div class="gs-box">
     <button class="gs-close" id="gsClose" aria-label="닫기">×</button>
@@ -873,17 +907,8 @@ const CONFIG = {
       <li>3. 여러분의 미소 😆<br><span class="gs-dim">(오늘 주인공은 저희뿐만이 아니에요!)</span></li>
       <li>4. 가족 &amp; 친구들과 함께한 순간 💕</li>
     </ul>
-    <p class="gs-sub">당일날, 아래 버튼을 통해 올려주세요!<br>많은 참여 부탁드려요! 💖</p>
-    <p class="gs-gift">🎁 미션 수행자 중 가장 멋진 컷을 남겨주신 분께<br>치킨 기프티콘을 쏩니다!</p>
-    <div class="gs-notice">
-      <div class="gs-notice-t">업로드 주의사항</div>
-      <p>· 한 번에 최대 100개까지 업로드하실 수 있어요.</p>
-      <p>· 여러 번 나누어 업로드하실 수 있어요.</p>
-      <p>· 영상은 파일당 200MB 이하만 첨부하실 수 있어요.</p>
-      <p>· 업로드 중 화면이 꺼지면 중단될 수 있으니, 화면이 켜진 상태로 진행해주세요.</p>
-    </div>
-    <p class="gs-deadline" id="gsDeadline"></p>
-    <button class="gs-submit" id="gsSubmit">사진 및 영상 전달하기</button>
+    <p class="gs-sub">당일날, 아래 ‘게스트스냅’ 메뉴에서<br>사진·영상을 올려주세요!<br>많은 참여 부탁드려요! 💖</p>
+    <button class="gs-submit" id="gsConfirm">확인</button>
   </div>
 </div>
 
@@ -936,11 +961,11 @@ $("#tmapBtn").addEventListener('click',e=>{
   setTimeout(()=>{ if(Date.now()-t<1500) window.open(fallback,'_blank'); },800);
 });
 /* 주차 안내 박스 */
-(function parking(){
+(function carInfo(){
   const box=$("#parkingBox"); if(!box) return;
-  const txt=C.wedding.parking||'';
+  const txt=C.wedding.car||'';
   if(!txt){ box.style.display='none'; return; }
-  // 첫 줄(제목)만 강조
+  // 첫 줄(주소)만 강조
   const lines=txt.split('\n');
   box.innerHTML=`<span class="pk-title">${esc(lines[0])}</span>\n`+esc(lines.slice(1).join('\n'));
 })();
@@ -1252,23 +1277,30 @@ $("#shareLink").addEventListener('click',()=>copy(location.href,'링크가 복�
   function row(role,name,telRaw){
     const tel=(telRaw||'').replace(/[^0-9]/g,'');
     const btns = tel
-      ? `<a class="call" href="tel:${tel}">📞 전화</a><a class="sms" href="sms:${tel}">✉️ 문자</a>`
-      : `<span class="contact-none">연락처 준비 중</span>`;
+      ? `<a class="call" href="tel:${tel}" aria-label="전화">📞</a><a class="sms" href="sms:${tel}" aria-label="문자">✉️</a>`
+      : `<span class="contact-none">준비 중</span>`;
     return `<div class="contact-row">
       <div class="who"><span class="role">${role}</span>${name}</div>
       <div class="contact-btns">${btns}</div></div>`;
   }
+  // 신랑·신부 (항상 표시)
   let html = row('신랑', C.groom.name, C.groom.tel) + row('신부', C.bride.name, C.bride.tel);
-  // 혼주(부모님) 연락처: 번호가 하나라도 있으면 구분선 후 표시
+  // 혼주(부모님) — 펼쳐보기
   const parents=[
     ['신랑 아버지', C.groom.father, C.groom.fatherTel],
     ['신랑 어머니', C.groom.mother, C.groom.motherTel],
     ['신부 아버지', C.bride.father, C.bride.fatherTel],
     ['신부 어머니', C.bride.mother, C.bride.motherTel]
   ];
-  html += `<div class="contact-divider">혼주에게 연락하기</div>`;
-  html += parents.map(([role,name,tel])=>row(role,name,tel)).join('');
+  html += `<button class="contact-toggle" id="contactToggle">혼주에게 연락하기 <span class="ct-arrow">▾</span></button>`;
+  html += `<div class="contact-parents" id="contactParents">`+
+          parents.map(([role,name,tel])=>row(role,name,tel)).join('')+`</div>`;
   wrap.innerHTML = html;
+  // 펼쳐보기 토글
+  const toggle=$("#contactToggle"), panel=$("#contactParents");
+  toggle.addEventListener('click',()=>{
+    toggle.classList.toggle('open'); panel.classList.toggle('open');
+  });
 })();
 
 /* ---- 배경음악(BGM) ---- */
@@ -1333,16 +1365,23 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 function openGuestSnap(){
   const m=$("#gsModal"); if(!m) return;
   m.classList.add('open');
+  document.body.style.overflow='hidden';   // 팝업 동안 배경 스크롤 잠금
 }
 (function guestSnap(){
   const m=$("#gsModal"); if(!m) return;
   const gs=C.guestSnap||{};
-  $("#gsDeadline").textContent = gs.deadline || '';
-  function close(){ m.classList.remove('open'); }
+  function close(){ m.classList.remove('open'); document.body.style.overflow=''; }
   $("#gsClose").addEventListener('click',close);
-  m.addEventListener('click',e=>{ if(e.target===m) close(); });
-  $("#gsSubmit").addEventListener('click',()=>{
-    if(gs.uploadUrl){ window.open(gs.uploadUrl,'_blank'); }
+  $("#gsConfirm").addEventListener('click',close);
+  // 배경 클릭으로는 닫지 않음(확인 버튼/× 로만) — 스크롤 잠금 유지
+  // 팝업 내부 스크롤이 배경으로 전파되지 않도록
+  const box=m.querySelector('.gs-box');
+  if(box) box.addEventListener('touchmove',e=>e.stopPropagation(),{passive:true});
+
+  // 하단 업로드 섹션
+  $("#gsnapDeadline").textContent = gs.deadline || '';
+  $("#gsnapUpload").addEventListener('click',()=>{
+    if(gs.uploadUrl){ window.open(gs.uploadUrl,'_blank','noopener'); }
     else{ toast('사진 전달 링크가 곧 준비됩니다'); }
   });
 })();
@@ -1358,7 +1397,7 @@ function openGuestSnap(){
     ['sec-calendar','달력'],['sec-location','오시는 길'],['sec-info','예식 안내'],
     ['sec-event','이벤트'],
     ['sec-account','계좌번호'],['sec-contact','연락하기'],['sec-rsvp','참석 의사'],
-    ['sec-guestbook','방명록'],['sec-qr','청첩장 공유']
+    ['sec-guestbook','방명록'],['sec-guestsnap','게스트스냅'],['sec-qr','청첩장 공유']
   ];
   list.innerHTML=items.map(([id,label])=>`<li><a href="#${id}" data-id="${id}">${label}</a></li>`).join('');
   function open(){ panel.classList.add('open'); overlay.classList.add('open'); }

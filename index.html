@@ -18,8 +18,6 @@
 <meta property="og:title" content="박상원 ♥ 이지수 결혼합니다" />
 <meta property="og:description" content="2026년 08월 23일 일요일, 저희 두 사람의 새로운 시작에 함께해 주세요." />
 <meta property="og:type" content="website" />
-<!-- 공유 미리보기 이미지: 메인 사진 준비되면 아래 절대 URL을 채우세요.
-     예) https://kakaopark857.github.io/sangwon_jisu.wedding/images/main.jpg -->
 <meta property="og:image" content="https://kakaopark857.github.io/sangwon_jisu.wedding/images/main.png" />
 <meta property="og:image:width" content="800" />
 <meta property="og:image:height" content="800" />
@@ -99,8 +97,8 @@ section{padding:60px 30px;position:relative}
 .hero .card>*:not(.card-frame-img){position:relative;z-index:2}
 /* 손그림 느낌 모서리 리본 */
 .hero .ribbon{font-size:32px;color:var(--coral);margin-bottom:4px;line-height:1}
-.hero .bigdate{font-family:'Gowun Batang',serif;font-weight:400;font-size:clamp(32px,10vw,42px);letter-spacing:.03em;
-  color:var(--ink);margin:2px 0 20px}
+.hero .bigdate{font-family:'Gowun Batang',serif;font-weight:700;font-size:clamp(32px,10vw,42px);letter-spacing:.03em;
+  color:#1a1a1a;margin:2px 0 20px}
 .hero .main-photo{width:78%;max-width:280px;aspect-ratio:27/35;margin:0 auto 18px;
   border-radius:50% 50% 10px 10px / 40% 40% 4% 4%;   /* 비율 기반 아치형(기기 무관) */
   overflow:hidden;position:relative;
@@ -125,7 +123,8 @@ section{padding:60px 30px;position:relative}
 
 /* ===== GREETING ===== */
 .greet p{color:var(--ink-soft);font-size:15.5px}
-.greet .verse{margin:22px 0;color:var(--ink);font-family:'Gowun Dodum',sans-serif;font-size:16.5px;line-height:1.95;letter-spacing:-.01em}
+.greet .verse,.greet #greetBody{margin:22px 0;color:var(--ink);font-family:'Gowun Dodum',sans-serif;
+  font-size:16.5px;line-height:1.95;letter-spacing:-.01em}
 .parents{margin-top:30px;font-size:15px;color:var(--ink-soft);line-height:2.4}
 .parents b{color:var(--ink);font-weight:700;font-family:'Jua',sans-serif;font-size:17px}
 .parents .nm{font-family:'Jua',sans-serif;font-weight:700;font-size:19px;color:var(--coral);margin-left:6px}
@@ -520,12 +519,11 @@ const CONFIG = {
     kakaoPlaceUrl: "https://place.map.kakao.com/1298739354",
     transport: "[수원역::1호선::#0052A4] 4번출구 앞\n10, 10-2, 10-5, 11-1, 15-1, 37, 83-1, 13-4, 720-2 탑승\n→ 수원고용복지플러스센터·동수원병원·라마다호텔 하차\n\n[수원시청역::수인분당선::#FABE00] 1번출구 82-1 탑승\n→ 우만신성아파트 하차\n\n[광교중앙역::신분당선::#D4003B] 3번출구 13-4 탑승\n→ 우만신성아파트 하차",
     // ── 자가용 안내 (주소 + 주차) ──
-    car: "더아리엘 수원 / 경기 수원시 팔달구 중부대로 181\n\n건물 내 1층·지하1층·제2주차장 주차 가능\n*만차 시, 직원 안내에 따라 외부 주차장 이용 가능 (2시간 무료)\n  송림빌딩, 세운주차장, 동수원병원",
-    // ── 예식 안내(식사·셔틀·화환 등). 항목명/내용 자유롭게 수정·추가 ──
+    car: "더아리엘 수원\n경기 수원시 팔달구 중부대로 181\n\n건물 내 1층·지하1층·제2주차장 주차 가능\n*만차 시, 직원 안내에 따라 외부 주차장 이용 가능 (2시간 무료)\n  송림빌딩, 세운주차장, 동수원병원",
+    // ── 예식 안내(식사·셔틀 등). 항목명/내용 자유롭게 수정·추가 ──
     notices: [
       { icon: "🍽️", title: "식사 안내", body: "예식 후 4층 or 5층 연회장에서 뷔페로 제공됩니다." },
-      { icon: "🚌", title: "셔틀버스", body: "아직 미정\n아직 미정" },
-      { icon: "💐", title: "화환 안내", body: "축하 화환은 정중히 사양합니다.\n축하해 주시는 마음만 감사히 받겠습니다." }
+      { icon: "🚌", title: "셔틀버스", body: "아직 미정\n아직 미정" }
     ],
     // ── 예식 순서 (나중에 작성). 비우면 "준비 중" 안내 표시 ──
     //   예: { time: "12:10", item: "개식 및 신랑신부 입장" }

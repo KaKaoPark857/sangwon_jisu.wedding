@@ -1357,17 +1357,23 @@ $("#shareLink").addEventListener('click',()=>copy(location.href,'링크가 복�
 })();
 
 /* ---- 배경음악(BGM) ---- */
+let startBgm = ()=>{};   // intro의 Open 버튼에서 호출 (실제 동작은 아래에서 할당)
 (function bgm(){
   const btn=$("#bgmBtn"), audio=$("#bgmAudio");
-  if(C.bgm){ audio.src=C.bgm; }
+  if(C.bgm){ audio.src=C.bgm; audio.loop=true; }   // 끝나면 자동 반복
   let playing=false;
+  function play(){
+    if(!C.bgm) return;
+    audio.play().then(()=>{ btn.classList.add('spin'); playing=true; })
+      .catch(()=>{ /* 자동재생이 막히면 조용히 무시 (버튼으로 켤 수 있음) */ });
+  }
+  function pause(){ audio.pause(); btn.classList.remove('spin'); playing=false; }
+  // Open 버튼이 누르는 순간 재생 시작 (사용자 동작이므로 소리 허용됨)
+  startBgm = play;
+  // ♪ 버튼: 수동 켜기/끄기
   btn.addEventListener('click',()=>{
     if(!C.bgm){ toast('음원이 아직 등록되지 않았습니다'); return; }
-    if(playing){ audio.pause(); btn.classList.remove('spin'); playing=false; }
-    else{
-      audio.play().then(()=>{ btn.classList.add('spin'); playing=true; })
-        .catch(()=>toast('재생할 수 없습니다'));
-    }
+    if(playing) pause(); else play();
   });
 })();
 
@@ -1402,6 +1408,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     if(opened) return; opened=true;
     el.classList.add('open');          // 좌우 문 열림 + 중앙 내용 페이드
     document.body.style.overflow='hidden';
+    startBgm();                        // ★ Open과 동시에 배경음악 재생
     const content=$("#introContent");  // 글자 묶음
     setTimeout(()=>{ if(content) content.style.visibility='hidden'; },250);  // 페이드 직후 완전 숨김
     setTimeout(()=>{                   // 선 그음(.55s)+지연(.5s)+문 열림(1.15s) 후 제거

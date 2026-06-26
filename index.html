@@ -11,8 +11,6 @@
      ========================================================= -->
 
 <!-- 카카오 지도 SDK는 키가 있을 때만 동적으로 로드합니다(아래 script 참고). -->
-<!-- QR 코드 생성 라이브러리 (오픈소스 qrcodejs) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <title>박상원 ♥ 이지수 결혼합니다</title>
 <meta property="og:title" content="박상원 ♥ 이지수 결혼합니다" />
@@ -20,7 +18,7 @@
 <meta property="og:type" content="website" />
 <!-- 공유 미리보기 이미지: 메인 사진 준비되면 아래 절대 URL을 채우세요.
      예) https://kakaopark857.github.io/sangwon_jisu.wedding/images/main.jpg -->
-<meta property="og:image" content="https://kakaopark857.github.io/sangwon_jisu.wedding/images/porch_shot.png" />
+<meta property="og:image" content="https://kakaopark857.github.io/sangwon_jisu.wedding/images/main.png" />
 <meta property="og:image:width" content="800" />
 <meta property="og:image:height" content="800" />
 
@@ -501,17 +499,17 @@ section{padding:60px 30px;position:relative}
 const CONFIG = {
   // ── 기본 정보 ──────────────────────────────
   groom:  { name: "박상원", displayName: "상원", father: "박광순", mother: "노재정", order: "장남",
-            tel: "010-4945-9512", fatherTel: "010-9553-4051", motherTel: "010-4152-0316",
+            tel: "010-4945-9512", fatherTel: "", motherTel: "",
             accounts: [
               { rel: "신랑", bank: "국민은행", number: "307002-04-287388", holder: "박상원" },
               { rel: "신랑 아버지", bank: "신한은행", number: "110-537-730737", holder: "박광순" },
               { rel: "신랑 어머니", bank: "국민은행", number: "308301-04-051354", holder: "노재정" }
             ] },
   bride:  { name: "이지수", displayName: "지수", father: "이창환", mother: "김정화", order: "차녀",
-            tel: "010-4938-0645", fatherTel: "010-5432-0645", motherTel: "010-9506-0645",
+            tel: "010-4938-0645", fatherTel: "", motherTel: "",
             accounts: [
               { rel: "신부", bank: "신한은행", number: "110-490-690632", holder: "이지수" },
-              { rel: "신부 아버지", bank: "농협은행", number: "815051-52-397109", holder: "이창환" },
+              { rel: "신부 아버지", bank: "농협은행", number: "81551-52-397109", holder: "이창환" },
               { rel: "신부 어머니", bank: "농협은행", number: "815041-52-130884", holder: "김정화" }
             ] },
 
@@ -559,43 +557,22 @@ const CONFIG = {
   // ── 메인 사진 (히어로 상단 아치형) ──────────
   //   사진 파일을 저장소 images/ 폴더에 올린 뒤 경로를 넣으세요.
   //   예: "images/main.jpg"  비워두면 placeholder가 표시됩니다.
-  mainPhoto: "images/temp/24.jpg",
+  mainPhoto: "",
 
   // ── 갤러리 사진 (최대 20장) ──────────────────
   //   사진 파일을 저장소 images/ 폴더에 올린 뒤 경로를 넣으세요.
   //   예: "images/photo01.jpg"  비워두면 자동으로 placeholder가 표시됩니다.
   gallery: [
-    "images/temp/1.jpg",
-    "images/temp/2.jpg",
-    "images/temp/3.jpg",
-    "images/temp/4.jpg",
-    "images/temp/5.jpg",
-    "images/temp/6.jpg",
-    "images/temp/7.jpg",
-    "images/temp/8.jpg",
-    "images/temp/9.jpg",
-    "images/temp/10.jpg",
-    "images/temp/11.jpg",
-    "images/temp/12.jpg",
-    "images/temp/13.jpg",
-    "images/temp/14.jpg",
-    "images/temp/15.jpg",
-    "images/temp/16.jpg",
-    "images/temp/17.jpg",
-    "images/temp/18.jpg",
-    "images/temp/19.jpg",
-    "images/temp/20.jpg",
-    "images/temp/21.jpg",
-    "images/temp/22.jpg",
-    "images/temp/23.jpg",
-    "images/temp/24.jpg"
+    // "images/photo01.jpg",
+    // "images/photo02.jpg",
+    // ... 최대 20장
   ],
   galleryCount: 20,        // 사진 경로가 비어있을 때 보여줄 placeholder 장수
   galleryCols: 4,          // 타일 칸 수 (4 = 4×5, 3 = 3×7)
 
   // ── 배경음악 (음원 준비되면 경로 입력. 비우면 버튼만 표시) ──
   //   예: "music/bgm.mp3"  저장소 music/ 폴더에 올린 뒤 경로 입력
-  bgm: "music/Wedding_Smile.mp3",
+  bgm: "",
 
   // ── 청첩장 주소 (QR 코드 생성에 사용) ──
   siteUrl: "https://kakaopark857.github.io/sangwon_jisu.wedding/",
@@ -731,6 +708,26 @@ const CONFIG = {
     </div>
   </section>
 
+  <!-- CONTACT + GIFT (연락하기 + 마음 전하실 곳) -->
+  <section class="center" id="sec-contact">
+    <div class="reveal">
+      <div class="eng">Contact &amp; Gift</div>
+      <div class="divider"></div>
+      <div class="title">연락하기</div>
+      <p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px" class="melody">
+        축하 인사를 전하고 싶으신 분들을 위해 연락처를 안내드립니다.</p>
+      <div class="contact-wrap" id="contactWrap"></div>
+
+      <div class="title" style="margin-top:38px">마음 전하실 곳</div>
+      <p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px" class="melody">
+        축하의 마음을 전하고 싶으신 분들을 위해 계좌번호를 안내드립니다.</p>
+      <button class="acc-toggle" data-target="accGroom">🎁 신랑측 계좌번호 보기</button>
+      <div class="acc-group" id="accGroom"></div>
+      <button class="acc-toggle" data-target="accBride" style="margin-top:10px">🎁 신부측 계좌번호 보기</button>
+      <div class="acc-group" id="accBride"></div>
+    </div>
+  </section>
+
   <!-- LOCATION -->
   <section class="place" id="sec-location">
     <div class="reveal center">
@@ -773,33 +770,6 @@ const CONFIG = {
   <section class="center" id="sec-event">
     <div class="reveal">
       <div class="event-card" id="eventCard"></div>
-    </div>
-  </section>
-
-  <!-- ACCOUNT -->
-  <section class="center" id="sec-account">
-    <div class="reveal">
-      <div class="eng">Gift</div>
-      <div class="divider"></div>
-      <div class="title">마음 전하실 곳</div>
-      <p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px" class="melody">
-        축하의 마음을 전하고 싶으신 분들을 위해 계좌번호를 안내드립니다.</p>
-      <button class="acc-toggle" data-target="accGroom">🎁 신랑측 계좌번호 보기</button>
-      <div class="acc-group" id="accGroom"></div>
-      <button class="acc-toggle" data-target="accBride" style="margin-top:10px">🎁 신부측 계좌번호 보기</button>
-      <div class="acc-group" id="accBride"></div>
-    </div>
-  </section>
-
-  <!-- CONTACT (전화/문자) -->
-  <section class="center" id="sec-contact">
-    <div class="reveal">
-      <div class="eng">Contact</div>
-      <div class="divider"></div>
-      <div class="title">연락하기</div>
-      <p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px" class="melody">
-        축하 인사를 전하고 싶으신 분들을 위해 연락처를 안내드립니다.</p>
-      <div class="contact-wrap" id="contactWrap"></div>
     </div>
   </section>
 
@@ -873,20 +843,6 @@ const CONFIG = {
       <p class="gsnap-deadline" id="gsnapDeadline"></p>
       <p class="gsnap-announce" id="gsnapAnnounce"></p>
       <button class="gsnap-btn" id="gsnapUpload">💬 오픈채팅으로 사진 올리기</button>
-    </div>
-  </section>
-
-  <!-- QR -->
-  <section class="center" id="sec-qr">
-    <div class="reveal">
-      <div class="eng">QR Code</div>
-      <div class="divider"></div>
-      <div class="title">청첩장 공유</div>
-      <p style="color:var(--ink-soft);font-size:14px;margin-top:6px" class="melody">
-        상단 QR코드를 스캔해 확인해 주세요.</p>
-      <div class="qr-box" id="qrBox"></div>
-      <div class="qr-desc">카메라로 스캔해 주세요</div>
-      <button class="qr-save" id="qrSave">QR 이미지 저장</button>
     </div>
   </section>
 
@@ -1377,22 +1333,6 @@ let startBgm = ()=>{};   // intro의 Open 버튼에서 호출 (실제 동작은 
   });
 })();
 
-/* ---- QR 코드 생성 ---- */
-(function makeQR(){
-  const url = C.siteUrl || location.href;
-  const box = $("#qrBox");
-  if(typeof QRCode === 'undefined'){ box.textContent='QR 로딩 실패'; return; }
-  new QRCode(box, { text:url, width:170, height:170,
-    colorDark:"#3a3a38", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.M });
-  $("#qrSave").addEventListener('click',()=>{
-    const cv=box.querySelector('canvas'), im=box.querySelector('img');
-    let dataUrl = cv ? cv.toDataURL('image/png') : (im ? im.src : null);
-    if(!dataUrl){ toast('저장에 실패했습니다'); return; }
-    const a=document.createElement('a'); a.href=dataUrl; a.download='wedding_qr.png'; a.click();
-    toast('QR 이미지가 저장되었습니다');
-  });
-})();
-
 /* ---- 스크롤 등장 애니메이션 ---- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}
@@ -1455,10 +1395,9 @@ function openGuestSnap(){
   // 메뉴 항목 (id ↔ 한글 라벨)
   const items=[
     ['sec-hero','메인'],['sec-greeting','인사말'],['sec-gallery','갤러리'],
-    ['sec-calendar','달력'],['sec-location','오시는 길'],['sec-info','예식 안내'],
-    ['sec-event','이벤트'],
-    ['sec-account','계좌번호'],['sec-contact','연락하기'],['sec-rsvp','참석 의사'],
-    ['sec-guestbook','방명록'],['sec-guestsnap','게스트스냅'],['sec-qr','청첩장 공유']
+    ['sec-calendar','달력'],['sec-contact','연락처·마음 전하실 곳'],
+    ['sec-location','오시는 길'],['sec-info','예식 안내'],['sec-event','이벤트'],
+    ['sec-rsvp','참석 의사'],['sec-guestbook','방명록'],['sec-guestsnap','게스트스냅']
   ];
   list.innerHTML=items.map(([id,label])=>`<li><a href="#${id}" data-id="${id}">${label}</a></li>`).join('');
   function open(){ panel.classList.add('open'); overlay.classList.add('open'); }

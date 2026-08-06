@@ -390,7 +390,7 @@ section{padding:60px 30px;position:relative}
 .addr-copy:active{background:var(--coral);color:#fff}
 
 /* ===== 예식 순서 아코디언 ===== */
-.order-toggle{width:100%;margin-top:12px;padding:13px;background:var(--green-bg);border:none;border-radius:10px;
+/* .order-toggle{width:100%;margin-top:12px;padding:13px;background:var(--green-bg);border:none;border-radius:10px;
   font-family:'Jua',sans-serif;font-size:15px;color:var(--ink);cursor:pointer}
 .order-toggle .ot-arrow{color:var(--coral);transition:transform .3s;display:inline-block}
 .order-toggle.open .ot-arrow{transform:rotate(180deg)}
@@ -398,7 +398,7 @@ section{padding:60px 30px;position:relative}
 .order-body.open{display:block;animation:fade .4s ease}
 .order-row{display:flex;gap:14px;padding:9px 4px;border-bottom:1px dashed var(--line);font-size:14px}
 .order-row .ot{font-family:'Jua',sans-serif;color:var(--coral);min-width:54px}
-.order-empty{text-align:center;color:var(--ink-soft);font-size:13px;padding:16px 0;font-family:'Hi Melody',cursive}
+.order-empty{text-align:center;color:var(--ink-soft);font-size:13px;padding:16px 0;font-family:'Hi Melody',cursive} */
 
 /* ===== 함께한 시간 카운터 (푸터) ===== */
 .since-label{font-family:'Gowun Dodum',sans-serif;font-size:14px;color:var(--ink);margin-top:18px}
@@ -984,17 +984,17 @@ $("#tmapBtn").addEventListener('click',e=>{
 })();
 $("#calMon").textContent = `${C.wedding.month}월`;
 
-/* ---- 예식 순서 아코디언 ---- */
-(function order(){
-  const toggle=$("#orderToggle"), body=$("#orderBody"); if(!toggle||!body) return;
-  const list=C.wedding.order||[];
-  body.innerHTML = list.length
-    ? list.map(o=>`<div class="order-row"><span class="ot">${esc(o.time||'')}</span><span>${esc(o.item||'')}</span></div>`).join('')
-    : `<div class="order-empty">예식 순서는 추후 안내드리겠습니다 ♥</div>`;
-  toggle.addEventListener('click',()=>{
-    toggle.classList.toggle('open'); body.classList.toggle('open');
-  });
-})();
+// /* ---- 예식 순서 아코디언 ---- */
+// (function order(){
+//   const toggle=$("#orderToggle"), body=$("#orderBody"); if(!toggle||!body) return;
+//   const list=C.wedding.order||[];
+//   body.innerHTML = list.length
+//     ? list.map(o=>`<div class="order-row"><span class="ot">${esc(o.time||'')}</span><span>${esc(o.item||'')}</span></div>`).join('')
+//     : `<div class="order-empty">예식 순서는 추후 안내드리겠습니다 ♥</div>`;
+//   toggle.addEventListener('click',()=>{
+//     toggle.classList.toggle('open'); body.classList.toggle('open');
+//   });
+// })();
 
 /* ---- 단체사진 이벤트 예고편 렌더 ---- */
 (function event(){

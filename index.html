@@ -143,6 +143,12 @@ section{padding:60px 30px;position:relative}
 .tile:active{transform:scale(.96)}
 .tile img{width:100%;height:100%;object-fit:cover;display:block}
 
+/* ===== 갤러리 슬라이드 ===== */
+.tile-grid.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;
+  padding:4px 2px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tile-grid.slider::-webkit-scrollbar{display:none}
+.tile-grid.slider .tile{flex:0 0 76%;max-width:270px;scroll-snap-align:center;border-radius:14px}
+
 /* 라이트박스(확대 보기) */
 .lightbox{position:fixed;inset:0;z-index:200;background:rgba(40,30,28,.92);
   display:none;align-items:center;justify-content:center;flex-direction:column;
@@ -563,30 +569,8 @@ const CONFIG = {
   //   사진 파일을 저장소 images/ 폴더에 올린 뒤 경로를 넣으세요.
   //   예: "images/photo01.jpg"  비워두면 자동으로 placeholder가 표시됩니다.
   gallery: [
-    "images/Main/1.jpg",
-    "images/Main/2.jpg",
-    "images/Main/3.jpg",
-    "images/Main/4.jpg",
-    "images/Main/5.jpg",
-    "images/Main/6.jpg",
-    "images/Main/7.jpg",
-    "images/Main/8.jpg",
-    "images/Main/9.jpg",
-    "images/Main/10.jpg",
-    "images/Main/11.jpg",
-    "images/Main/12.jpg",
-    "images/Main/13.jpg",
-    "images/Main/14.jpg",
-    "images/Main/15.jpg",
-    "images/Main/16.jpg",
-    "images/Main/17.jpg",
-    "images/Main/18.jpg",
-    "images/Main/19.jpg",
-    "images/Main/20.jpg",
-    "images/Main/21.jpg",
-    "images/Main/22.jpg",
-    "images/Main/23.jpg",
-    "images/Main/24.jpg"
+    ...Array.from({length:24},(_,i)=>`images/Main/${i+1}.jpg`),
+    ...Array.from({length:20},(_,i)=>`images/DongJak/${i+1}.jpg`)
   ],
   galleryCount: 20,        // 사진 경로가 비어있을 때 보여줄 placeholder 장수
   galleryCols: 4,          // 타일 칸 수 (4 = 4×5, 3 = 3×7)
@@ -1034,8 +1018,8 @@ $("#calMon").textContent = `${C.wedding.month}월`;
   }
 
   const total = imgs.length;
-  /* 칸 수: CONFIG.galleryCols (3 또는 4), 기본 4 */
-  if(C.galleryCols === 3) grid.classList.add('cols3');
+  /* 슬라이드(가로 스와이프) 모드 */
+  grid.classList.add('slider');
 
   let html='';
   for(let i=0;i<total;i++){
